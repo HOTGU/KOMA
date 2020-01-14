@@ -8,7 +8,14 @@ class SimpleImage {
   }
 
   constructor({ data }) {
-    this.data = data;
+    this.data = {
+      url: data.url || "",
+      caption: data.caption || "",
+      withBorder: data.withBorder !== undefined ? data.withBorder : false,
+      withBackground:
+        data.withBackground !== undefined ? data.withBackground : false,
+      stretched: data.stretched !== undefined ? data.stretched : false
+    };
     this.wrapper = undefined;
     this.settings = [
       {
@@ -66,10 +73,10 @@ class SimpleImage {
     const image = blockContent.querySelector("img");
     const caption = blockContent.querySelector("input");
 
-    return {
+    return Object.assign(this.data, {
       url: image.src,
       caption: caption.value
-    };
+    });
   }
 
   validate(savedData) {
@@ -89,8 +96,17 @@ class SimpleImage {
       button.classList.add("cdx-settings-button");
       button.innerHTML = tune.icon;
       wrapper.appendChild(button);
+
+      button.addEventListener("click", () => {
+        this._toggleTune(tune.name);
+        button.classList.toggle("cdx-settings-button--active");
+      });
     });
 
     return wrapper;
+  }
+
+  _toggleTune(tune) {
+    this.data[tune] = !this.data[tune];
   }
 }
