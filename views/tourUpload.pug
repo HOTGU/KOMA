@@ -1,0 +1,16 @@
+extends layout/editor.pug
+
+block content
+    //- .form-container
+    //-     form(action=`/tour${routes.tourUpload}` method="post" enctype="multipart/form-data")
+    //-         input(type="text" name="title" placeholder="Title")
+    //-         textarea(name="description" placeholder="Trip infomation" cols="40" rows="20")
+    //-         input(type="file" name="imageFile" accept="img/*")
+    //-         input(type="submit" value="Upload")
+    
+    #editorjs
+    button#save-button Save
+    pre#output
+
+    script(type="module" src="../static/editor.js")
+    

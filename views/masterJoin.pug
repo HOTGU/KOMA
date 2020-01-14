@@ -1,0 +1,15 @@
+extends layout/main.pug
+
+block content
+    .form-container
+        label(for="avatar") Choose Avatar<span style="color: red !important; display: inline; float: none;">*</span>
+            input(type="file" name="avatar" id="avatar" accept="img/*")
+        label(for="liveKorea") How long have you lived in KOREA? 
+            select(name="liveKorea" id="liveKorea")
+                option 1 Year
+                option 2 Year
+                option 3 Year
+                option 4 Year
+                option 5 Year
+                option More than 5 Year
+        input(type="text")

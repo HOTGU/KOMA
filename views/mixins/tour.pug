@@ -1,0 +1,6 @@
+mixin tourBlock(tour={}) 
+    .tourBlock
+        a(href=routes.tourDetail(tour.id))
+            img.tourBlock__avatar(src=tour.avatarUrl width="200px" height="200px")
+            h3.tourBlock__title=tour.title
+            h5.toruBlock__description=tour.desription

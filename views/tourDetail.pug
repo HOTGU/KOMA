@@ -1,0 +1,8 @@
+extends layout/main.pug
+
+block content
+    .tour__author
+        img(src=`/${tour.imageUrl}` height="200px" width="200px")
+    .tour__info
+        h3.tour__title=tour.title
+        p.tour__description=tour.description

@@ -1,51 +1,68 @@
 // Global
 
 const HOME = "/";
-
-// Users
-
-const USERS = "/users";
-const USERS_HOME = "/users-home";
-const USER_JOIN = "/join";
-const USER_LOGIN = "/login";
-const USER_LOGOUT = "/logout";
-const USER_DETAIL = "/:id";
+const JOIN = "/join";
+const LOGIN = "/login";
+const LOGOUT = "/logout";
 const SEARCH = "/search";
-const USER_EDIT_PROFILE = "/edit-profile";
-const USER_CHANGE_PASSWORD = "/change-password";
 
-// Guide
+// Guests
 
-const GUIDE = "/guide";
-const GUIDE_HOME = "/guide-home";
-const UPLOAD_TOUR = "/upload-tour";
-const GUIDE_JOIN = "/join";
-const GUIDE_LOGIN = "/login";
-const GUIDE_LOGOUT = "/logout";
+const GUESTS = "/guests";
+const GUEST_DETAIL = "/:id";
+const EDIT_PROFILE = "/edit-profile";
+const CHANGE_PASSWORD = "/change-password";
+
+// Master
+
+const MASTER = "/master";
+const ABOUT = "/about";
+const MASTER_JOIN = "/join";
+const MASTER_DETAIL = "/:id";
+
+// Tour
+
+const TOUR = "/tour";
+const TOUR_UPLOAD = "/upload";
 const TOUR_DETAIL = "/:id";
-const EDIT_TOUR = "/:id/edit";
-const DELETE_TOUR = "/:id/delete";
+const TOUR_DELETE = "/:id/delete";
 
 const routes = {
   home: HOME,
-  userJoin: USER_JOIN,
-  userLogin: USER_LOGIN,
-  userLogout: USER_LOGOUT,
+  join: JOIN,
+  login: LOGIN,
+  logout: LOGOUT,
   search: SEARCH,
-  users: USERS,
-  usersHome: USERS_HOME,
-  userDetail: USER_DETAIL,
-  userEditProfile: USER_EDIT_PROFILE,
-  userChangePassword: USER_CHANGE_PASSWORD,
-  guide: GUIDE,
-  guideHome: GUIDE_HOME,
-  guideJoin: GUIDE_JOIN,
-  guideLogin: GUIDE_LOGIN,
-  guideLogout: GUIDE_LOGOUT,
-  uploadTour: UPLOAD_TOUR,
-  tourDetail: TOUR_DETAIL,
-  editTour: EDIT_TOUR,
-  deleteTour: DELETE_TOUR
+  guests: GUESTS,
+  guestDetail: id => {
+    if (id) {
+      return `/guests/${id}`;
+    } else {
+      return GUEST_DETAIL;
+    }
+  },
+  editProfile: EDIT_PROFILE,
+  changePassword: CHANGE_PASSWORD,
+  master: MASTER,
+  about: ABOUT,
+  masterJoin: MASTER_JOIN,
+  masterDetail: id => {
+    if (id) {
+      return `/master/${id}`;
+    } else {
+      return MASTER_DETAIL;
+    }
+  },
+  tour: TOUR,
+  tourUpload: TOUR_UPLOAD,
+  tourDetail: id => {
+    if (id) {
+      return `/tour/${id}`;
+    } else {
+      return TOUR_DETAIL;
+    }
+  },
+  tourDelete: TOUR_DELETE
 };
 
 export default routes;

@@ -1,0 +1,12 @@
+extends layout/main
+
+block content
+    .master-about__container
+        .master-about__column
+            ul
+                li 자신의 특별한 여행을 공유해보세요  
+                li 글로벌 친구를 사귀어보세요
+                li 수익을 창출해보세요
+        .master-about__column
+            a(href=`/master${routes.masterJoin}`)
+                button Master Join!

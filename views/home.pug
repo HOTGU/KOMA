@@ -1,1 +1,12 @@
-extends layouts/firstPage
+extends layout/main.pug
+include mixins/tour.pug
+
+block content
+    .tours
+        each tour in tours
+            +tourBlock({
+                avatarUrl:tour.imageUrl,
+                title:tour.title,
+                desription:tour.description,
+                id:tour.id
+            })
