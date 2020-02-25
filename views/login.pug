@@ -1,8 +1,9 @@
-extends layout/main.pug
+extends layout/form.pug
 
 block content
     .form-container
         form(action=routes.login method="post")
+            div.login__text  Welcome KOMA 😊
             input(type="email" name="email" placeholder="Email")
             input(type="password" name="password" placeholder="Password")
             input(type="submit" value="Login")

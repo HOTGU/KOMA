@@ -5,15 +5,15 @@ export const getTourUpload = (req, res) => res.render("tourUpload");
 
 export const postTourUpload = async (req, res) => {
   const {
-    body: { title, description },
+    body: { title, description, concept },
     file: { path }
   } = req;
   const newTour = await Tour.create({
     imageUrl: path,
     title,
-    description
+    description,
+    concept
   });
-  console.log(newTour);
   res.redirect(routes.tourDetail(newTour.id));
 };
 
@@ -23,7 +23,6 @@ export const tourDetail = async (req, res) => {
   } = req;
   try {
     const tour = await Tour.findById(id);
-    console.log(tour);
     res.render("tourDetail", { pageTitle: "Video detail", tour });
   } catch (error) {
     console.log(error);

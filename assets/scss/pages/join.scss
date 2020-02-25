@@ -1,0 +1,63 @@
+.thumbnail-box {
+  font-size: 15px;
+  font-weight: 600;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  .profile-photo {
+    width: 130px;
+    height: 130px;
+    border-radius: 100%;
+  }
+  input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+  }
+  label[for="avatar"] {
+    display: inline-block;
+    padding: 0.5em 0.75em;
+    color: black;
+    font-size: inherit;
+    line-height: normal;
+    vertical-align: middle;
+    background-color: rgb(245, 245, 245);
+    cursor: pointer;
+    border-radius: 0.25em;
+    transition: background-color 0.2s;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    &:hover {
+      background-color: rgb(216, 216, 216);
+    }
+    &:active {
+      background-color: #666666;
+    }
+  }
+}
+label[for="country"] {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+  select {
+    width: 200px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    appearance: none;
+    padding: 10px;
+    font-size: 15px;
+  }
+  select:hover {
+    background-color: rgb(248, 248, 248);
+  }
+  select:focus {
+    outline: none;
+  }
+}

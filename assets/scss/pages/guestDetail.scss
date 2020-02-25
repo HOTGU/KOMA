@@ -1,0 +1,16 @@
+.user-profile__header {
+  width: 100%;
+  // background-color:
+  margin-top: 50px;
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .u-avatar {
+    border-radius: 100%;
+    width: 200px;
+    height: 200px;
+    margin-bottom: 50px;
+  }
+}

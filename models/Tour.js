@@ -1,15 +1,10 @@
 import mongoose from "mongoose";
 
 const TourSchema = new mongoose.Schema({
-  imageUrl: {
-    type: String,
-    required: "Image URL is required"
-  },
-  title: {
-    type: String,
-    required: "Title is required"
-  },
-  description: String,
+  imageUrl: String,
+  title: String,
+  description: Object,
+  concept: Array,
   views: {
     type: Number,
     default: 0

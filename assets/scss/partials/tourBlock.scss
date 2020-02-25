@@ -1,0 +1,26 @@
+.tours {
+  width: 90%;
+  margin: 0 auto;
+  background-color: rgb(255, 255, 255);
+  border-radius: 20px;
+
+  .tourBlock {
+    padding-top: 30px;
+    margin: 20px;
+    // margin-bottom: 100px;
+    border: 5px solid red;
+    &:last-child {
+      // background-color: red;
+      padding-bottom: 30px;
+    }
+    a {
+      display: flex;
+      .tourBlock__avatar {
+        border-radius: 20px;
+      }
+      .tourBlock__title {
+        font-size: 60px;
+      }
+    }
+  }
+}

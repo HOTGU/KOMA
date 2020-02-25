@@ -3,4 +3,14 @@ mixin tourBlock(tour={})
         a(href=routes.tourDetail(tour.id))
             img.tourBlock__avatar(src=tour.avatarUrl width="200px" height="200px")
             h3.tourBlock__title=tour.title
-            h5.toruBlock__description=tour.desription
+            h5.tourBlock__description=tour.description
+            for concept in tour.concept
+                .btn-container
+                    h5.concept__btn= concept
+
+
+    script.
+        var tourConcept = document.querySelector('.tourBlock__concept');
+        console.dir(tourConcept);
+        
+    

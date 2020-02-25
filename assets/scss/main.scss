@@ -1,0 +1,37 @@
+body {
+  background-color: #f7f7f7;
+  color: black;
+  font-size: 14px;
+}
+
+main {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  min-height: 70vh;
+}
+
+button,
+input {
+  padding: 7px 10px;
+  width: 100%;
+  border-radius: 5px;
+  font-size: 14px;
+  color: black;
+  font-weight: 600;
+  &::placeholder {
+    font-weight: 300;
+    color: rgba(0, 0, 0, 0.7);
+  }
+}
+
+.preview-img {
+  width: 180px;
+  height: 180px;
+  padding: 20px;
+  border-radius: 30px;
+}
+
+.hidden {
+  display: none;
+}

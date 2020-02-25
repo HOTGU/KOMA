@@ -1,10 +1,15 @@
-extends layout/main.pug
+extends layout/form.pug
 
 block content
     .form-container
-        form(action=routes.join method="post")
-            <label for="country">Country</label><span style="color: red !important; display: inline; float: none;">*</span>
-                <select id="country" name="country" class="form-control">
+        form(action=routes.join method="post" enctype="multipart/form-data")
+            .thumbnail-box
+                img.preview-img.hidden.profile-photo(src="" )
+                span.thumbnail-info Choose Profile Photo
+                label(for="avatar") Find Image
+                input(type="file" name="avatar" id="avatar" occept="image/*")
+            label(for="country") Country
+                <select id="country" name="country" class="form-control" >
                     <option value="Afghanistan">Afghanistan</option>
                     <option value="Åland Islands">Åland Islands</option>
                     <option value="Albania">Albania</option>
@@ -253,5 +258,8 @@ block content
             input(type="name" name="name" placeholder="Name")
             input(type="email" name="email" placeholder="Email")
             input(type="password" name="password" placeholder="Password")
-            input(type="password" name="password2" placeholder="Verify Password")
+            input(type="password" name="password2"  placeholder="Verify Password")
             input(type="submit" value="Join Now")
+
+    script(src="../static/previewImage.js")
+    

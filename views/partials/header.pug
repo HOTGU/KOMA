@@ -1,27 +1,28 @@
-header.header   
-    .header__column
-        a(href=routes.home)
-            span KOMA
-    .header__column
-        if !user.loggedUser 
-            ul
-                li
-                    a(href=routes.join)
-                        | JOIN
-                li
-                    a(href=routes.login)
-                        | LOGIN
-        else 
-            ul
-                li
-                    a(href=`/tour${routes.tourUpload}`)
-                        | UPLOAD
-                li
-                    a(href=`/master${routes.about}`)
-                        | MASTER
-                li
-                    a(href=routes.guestDetail(user.id))
-                        | PROFILE
-                li
-                    a(href=routes.logout)
-                        | LOGOUT
+header.header
+    .header__wrapper
+        .header__column
+            a(href=routes.home)
+                span KOMA'
+        .header__column
+            if !loggedUser
+                ul
+                    li
+                        a(href=routes.join)
+                            | JOIN
+                    li
+                        a(href=routes.login)
+                            | LOGIN
+            else 
+                ul
+                    li
+                        a(href=`/tour${routes.tourUpload}`)
+                            | UPLOAD
+                    li
+                        a(href=`/master${routes.about}`)
+                            | MASTER
+                    li
+                        a(href=routes.me)
+                            | PROFILE
+                    li
+                        a(href=routes.logout)
+                            | LOGOUT

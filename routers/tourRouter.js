@@ -1,11 +1,6 @@
 import express from "express";
 import routes from "../routes";
-import {
-  tourDetail,
-  tourDelete,
-  getTourUpload,
-  postTourUpload
-} from "../controllers/tourController";
+import { tourDetail, tourDelete, getTourUpload, postTourUpload } from "../controllers/tourController";
 import { uploadTour } from "../middleware";
 
 const tourRouter = express.Router();

@@ -1,8 +1,13 @@
 extends layout/main.pug
 
 block content
-    .tour__author
+    .tour__thumbnail
         img(src=`/${tour.imageUrl}` height="200px" width="200px")
     .tour__info
         h3.tour__title=tour.title
-        p.tour__description=tour.description
+        #tour__description
+        
+    script.
+        let tour = !{JSON.stringify(tour)}
+        var description = document.querySelector("#tour__description");
+        description.innerHTML = tour.description;

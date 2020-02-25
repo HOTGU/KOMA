@@ -12,6 +12,7 @@ const GUESTS = "/guests";
 const GUEST_DETAIL = "/:id";
 const EDIT_PROFILE = "/edit-profile";
 const CHANGE_PASSWORD = "/change-password";
+const ME = "/me";
 
 // Master
 
@@ -26,6 +27,9 @@ const TOUR = "/tour";
 const TOUR_UPLOAD = "/upload";
 const TOUR_DETAIL = "/:id";
 const TOUR_DELETE = "/:id/delete";
+
+const KAKAO = "/auth/kakao";
+const KAKAO_CALLBACK = "/auth/kakao/callback";
 
 const routes = {
   home: HOME,
@@ -62,7 +66,10 @@ const routes = {
       return TOUR_DETAIL;
     }
   },
-  tourDelete: TOUR_DELETE
+  tourDelete: TOUR_DELETE,
+  kakao: KAKAO,
+  kakaoCallback: KAKAO_CALLBACK,
+  me: ME
 };
 
 export default routes;

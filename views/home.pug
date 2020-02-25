@@ -2,11 +2,15 @@ extends layout/main.pug
 include mixins/tour.pug
 
 block content
+    .main-screen
+        div.main-text Meet Real KOREA !
     .tours
         each tour in tours
             +tourBlock({
                 avatarUrl:tour.imageUrl,
                 title:tour.title,
-                desription:tour.description,
-                id:tour.id
+                id:tour.id,
+                concept:tour.concept
             })
+
+    script(src="../static/mainScreen.js")
