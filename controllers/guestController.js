@@ -58,7 +58,7 @@ export const guestDetail = async (req, res) => {
   try {
     const user = await User.findById(id);
     console.log(user);
-    res.render("guestDetail", { pageTitle: "Guest Detail", user: req.user });
+    res.render("guestDetail", { pageTitle: "Guest Detail", user });
   } catch (error) {
     res.redirect(routes.home);
   }
