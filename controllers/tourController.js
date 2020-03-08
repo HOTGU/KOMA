@@ -12,8 +12,11 @@ export const postTourUpload = async (req, res) => {
     imageUrl: path,
     title,
     description,
-    concept
+    concept,
+    creator: req.user.id
   });
+  req.user.tours.push(newTour.id);
+  req.user.save();
   res.redirect(routes.tourDetail(newTour.id));
 };
 
@@ -22,7 +25,8 @@ export const tourDetail = async (req, res) => {
     params: { id }
   } = req;
   try {
-    const tour = await Tour.findById(id);
+    const tour = await Tour.findById(id).populate("creator");
+    console.log(tour);
     res.render("tourDetail", { pageTitle: "Video detail", tour });
   } catch (error) {
     console.log(error);

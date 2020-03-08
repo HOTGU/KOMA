@@ -2,7 +2,7 @@ import Tour from "../models/Tour";
 
 export const home = async (req, res) => {
   try {
-    const tours = await Tour.find({});
+    const tours = await Tour.find({}).populate("creator");
     res.render("home", { pageTitle: "home", tours });
   } catch (error) {
     console.log(error);

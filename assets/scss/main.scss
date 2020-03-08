@@ -1,6 +1,6 @@
 body {
-  background-color: #f7f7f7;
-  color: black;
+  background-color: $bgColor;
+  color: $black;
   font-size: 14px;
 }
 
@@ -11,25 +11,17 @@ main {
   min-height: 70vh;
 }
 
-button,
-input {
-  padding: 7px 10px;
-  width: 100%;
-  border-radius: 5px;
-  font-size: 14px;
-  color: black;
-  font-weight: 600;
-  &::placeholder {
-    font-weight: 300;
-    color: rgba(0, 0, 0, 0.7);
-  }
-}
-
 .preview-img {
   width: 180px;
   height: 180px;
   padding: 20px;
   border-radius: 30px;
+}
+
+.g-avatar {
+  border-radius: 100%;
+  width: 200px;
+  height: 200px;
 }
 
 .hidden {

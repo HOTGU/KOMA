@@ -23,7 +23,6 @@ const CookieStore = MongoStore(session);
 app.use(helmet());
 app.set("view engine", "pug");
 app.set("views", [__dirname + "/views"]);
-app.use("/uploads", express.static("uploads"));
 app.use("/static", express.static("static"));
 app.use(cookieParser());
 app.use(bodyParser.json());
@@ -39,6 +38,7 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
+app.use("/uploads", express.static("uploads"));
 
 app.use(localsmiddleware);
 
