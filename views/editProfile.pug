@@ -3,11 +3,10 @@ extends layout/form.pug
 block content
     .form-container
         form(action=`/guests${routes.editProfile}`,method="post",enctype="multipart/form-data")
-            .thumbnail-box
-                img.preview-img.profile-photo(src=`/${loggedUser.avatarUrl}`)
-                span.thumbnail-info 
-                label(for="avatar") Change Image
-                input(type="file" name="avatar" id="avatar" occept="image/*")
+            .avatar-box
+                label.imgLabel(for="avatar") 📸 Change
+                img.preview-img.profileImg(src=`/${loggedUser.avatarUrl}`)
+                input.imgInput(type="file" name="avatar" id="avatar" occept="image/*")
             label(for="country") Country
                 <select id="country" name="country" class="form-control" >
                     <option value="Afghanistan">Afghanistan</option>
@@ -259,4 +258,3 @@ block content
             input(type="email", placeholder="Email", name="email", value=loggedUser.email)
             input(type="submit", value="Update Profile")
     
-    script(src="../static/previewImage.js")

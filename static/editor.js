@@ -90,11 +90,11 @@
 /*!*****************************!*\
   !*** ./assets/js/editor.js ***!
   \*****************************/
-/*! exports provided: default */
+/*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var quill__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! quill */ \"./node_modules/quill/dist/quill.js\");\n/* harmony import */ var quill__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(quill__WEBPACK_IMPORTED_MODULE_0__);\n\nvar form = document.querySelector(\"form\");\nvar toolbaOptions = [[{\n  size: [\"small\", false, \"large\", \"huge\"]\n}], [\"bold\", \"italic\", \"underline\"], [{\n  color: []\n}, {\n  background: []\n}], [{\n  font: []\n}], [{\n  align: []\n}], [({\n  list: \"ordered\"\n}, {\n  list: \"bullet\"\n})], [{\n  indent: \"-1\"\n}, {\n  indent: \"+1\"\n}], [\"link\", \"image\", \"video\"]];\nvar option = {\n  modules: {\n    toolbar: toolbaOptions\n  },\n  placeholder: \"Korea is awesome!!\",\n  theme: \"snow\"\n};\nvar quill = new quill__WEBPACK_IMPORTED_MODULE_0___default.a(\"#editor\", option);\n\nform.onsubmit = function () {\n  var description = document.querySelector(\"input[name=description]\");\n  description.value = quill.root.innerHTML;\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (editor);\n\n//# sourceURL=webpack:///./assets/js/editor.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var quill__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! quill */ \"./node_modules/quill/dist/quill.js\");\n/* harmony import */ var quill__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(quill__WEBPACK_IMPORTED_MODULE_0__);\n\nvar form = document.querySelector(\"form\");\nvar toolbaOptions = [[{\n  size: [\"small\", false, \"large\", \"huge\"]\n}], [\"bold\", \"italic\", \"underline\"], [{\n  color: []\n}, {\n  background: []\n}], [{\n  font: []\n}], [{\n  align: []\n}], [({\n  list: \"ordered\"\n}, {\n  list: \"bullet\"\n})], [{\n  indent: \"-1\"\n}, {\n  indent: \"+1\"\n}], [\"link\", \"image\", \"video\"]];\nvar option = {\n  modules: {\n    toolbar: toolbaOptions\n  },\n  placeholder: \"Korea is awesome!!\",\n  theme: \"snow\"\n};\nvar quill = new quill__WEBPACK_IMPORTED_MODULE_0___default.a(\"#editor\", option);\n\nform.onsubmit = function () {\n  var description = document.querySelector(\"input[name=description]\");\n  description.value = quill.root.innerHTML;\n}; // export default editor;\n\n//# sourceURL=webpack:///./assets/js/editor.js?");
 
 /***/ }),
 

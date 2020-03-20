@@ -1,62 +1,75 @@
-extends layout/main.pug
+extends layout/upload.pug
+include mixins/image.pug
 
 block content
-    .upload-container
-        form(action=`/tour${routes.tourUpload}` method="post" enctype="multipart/form-data" Content-type="application/json")
-            input(type="text" name="title" placeholder="Title")
-            .box-container
-                .thumbnail-box
-                    span.thumbnail-info Choose Thumbnail    
-                    img.preview-img.hidden(src="" )
-                    label(for="thumbnail") Find Image
-                    input(type="file" name="thumbnail" id="thumbnail" occept="image/*")
-                .category-box
-                    ul.category
-                        li
-                            div.category__name Concept Of Your Trip 😎
-                        li
-                            input(type="checkbox" class="tourConcept" id="about-food" value="about-food" name="concept[]")
-                            label(for="about-food") About Food
-                        li
-                            input(type="checkbox" class="tourConcept" id="about-shopping" value="about-shopping" name="concept[]")
-                            label(for="about-shopping") About Shopping
-                        li
-                            input(type="checkbox" class="tourConcept" id="K-POP" value="K-POP" name="concept[]")
-                            label(for="K-POP") K-POP(idol)
-                        li
-                            input(type="checkbox" class="tourConcept" id="about-beauty" value="about-beauty" name="concept[]")
-                            label(for="about-beauty") About-Beauty
-                        li
-                            input(type="checkbox" class="tourConcept" id="active" value="active" name="concept[]")
-                            label(for="active") Active
-                        li
-                            input(type="checkbox" class="tourConcept" id="traditional" value="traditional" name="concept[]")
-                            label(for="traditional") Traditional
-                        li
-                            input(type="checkbox" class="tourConcept" id="artistic" value="artistic" name="concept[]")
-                            label(for="artistic") Artistic
-                        li
-                            input(type="checkbox" class="tourConcept" id="calm" value="calm" name="concept[]")
-                            label(for="calm") Calm & Cozy
-                        li
-                            input(type="checkbox" class="tourConcept" id="clean" value="clean" name="concept[]")
-                            label(for="clean") Clean
-                        li
-                            input(type="checkbox" class="tourConcept" id="suburban" value="suburban" name="concept[]")
-                            label(for="suburban") Suburban
-                        li
-                            input(type="checkbox" class="tourConcept" id="urban" value="urban" name="concept[]")
-                            label(for="urban") Urban
-           
-            input(name="description" type="hidden")
-            #editor
-            button(type="submit" onclick="getCheckConcept()") Upload
+    .tourUpload-container
+        .btn-container
+            button(type="button" id="jsTourTitleBtn") 제목
+            button(type="button" id="jsTourPhotosBtn") 사진
+            button(type="button" id="jsTourConceptBtn") 콘셉트
+            button(type="button" id="jsTourProgramBtn") 여행소개
+            button(type="button" id="jsTourCourseBtn") 여행코스
+        .list-container
+            form(action=`/tour${routes.tourUpload}` method="post" enctype="multipart/form-data" Content-type="application/json")
+                #jsTourTitle.tour-container.hidden
+                    input(type="text" name="title" placeholder="Title" )
+                #jsTourPhotos.tour-container.hidden
+                    div 여행에 사진을 올려보세요
+                    .tumbnail-container
+                        div.thumbnail-info 썸네일사진을 올려보세요 썸네일 사진은 여행을 대표하는 사진이 됩니다.
+                        +imageBlock("📸 Photo","thumbnailImg", "thumbnail")
+                    .photos-container
+                        div 여행소개에 들어갈 사진을 최대 9개올려보세요
+                        +imageListBlock(1)
+                        +imageListBlock(2)
+                        +imageListBlock(3)
+                        +imageListBlock(4)
+                #jsTourConcept.tour-container.hidden
+                    .category-box
+                        ul.category
+                            li
+                                div.category__name Concept Of Your Trip 😎
+                            li
+                                input(type="checkbox" class="tourConcept" id="food" value="food" name="concept[]")
+                                label(for="food") Food
+                            li
+                                input(type="checkbox" class="tourConcept" id="shopping" value="shopping" name="concept[]")
+                                label(for="shopping") Shopping
+                            li
+                                input(type="checkbox" class="tourConcept" id="K-POP" value="KPOP" name="concept[]")
+                                label(for="K-POP") KPOP
+                            li
+                                input(type="checkbox" class="tourConcept" id="beauty" value="beauty" name="concept[]")
+                                label(for="beauty") Beauty
+                            li
+                                input(type="checkbox" class="tourConcept" id="active" value="active" name="concept[]")
+                                label(for="active") Active
+                            li
+                                input(type="checkbox" class="tourConcept" id="traditional" value="traditional" name="concept[]")
+                                label(for="traditional") Traditional
+                            li
+                                input(type="checkbox" class="tourConcept" id="artistic" value="artistic" name="concept[]")
+                                label(for="artistic") Artistic
+                            li
+                                input(type="checkbox" class="tourConcept" id="calm" value="calm" name="concept[]")
+                                label(for="calm") Calm & Cozy
+                            li
+                                input(type="checkbox" class="tourConcept" id="clean" value="clean" name="concept[]")
+                                label(for="clean") Clean
+                            li
+                                input(type="checkbox" class="tourConcept" id="suburban" value="suburban" name="concept[]")
+                                label(for="suburban") Suburban
+                            li
+                                input(type="checkbox" class="tourConcept" id="urban" value="urban" name="concept[]")
+                                label(for="urban") Urban
+                #jsTourProgram.tour-container.hidden
+                    textarea(name="description" )
+                #jsTourCourse.tour-container.hidden
+                    button(type="submit") Upload
     
        
 
-    script(src="../static/editor.js")
-    script(src="../static/previewImage.js")
-        
+    //- script(src="../static/editor.js")
 
     
         

@@ -1,0 +1,12 @@
+.tourDetail-container {
+  width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .tour__creator {
+    .creator-img {
+      width: 100px;
+    }
+  }
+}

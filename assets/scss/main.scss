@@ -1,21 +1,13 @@
 body {
-  background-color: $bgColor;
+  background-color: $white;
   color: $black;
   font-size: 14px;
 }
 
 main {
   width: 100%;
-  max-width: 1400px;
   margin: 0 auto;
   min-height: 70vh;
-}
-
-.preview-img {
-  width: 180px;
-  height: 180px;
-  padding: 20px;
-  border-radius: 30px;
 }
 
 .g-avatar {

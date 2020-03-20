@@ -2,8 +2,6 @@ extends layout/main.pug
 include mixins/tour.pug
 
 block content
-    .main-screen
-        div.main-text Meet Real KOREA !
     .tours
         each tour in tours
             +tourBlock({
@@ -14,5 +12,3 @@ block content
                 creatorName:tour.creator.name,
                 creatorImg:tour.creator.avatarUrl
             })
-
-    script(src="../static/mainScreen.js")

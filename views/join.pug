@@ -1,13 +1,11 @@
 extends layout/form.pug
+include mixins/image.pug
 
 block content
     .form-container
         form(action=routes.join method="post" enctype="multipart/form-data")
-            .thumbnail-box
-                img.preview-img.hidden.profile-photo(src="" )
-                span.thumbnail-info Choose Profile Photo
-                label(for="avatar") Find Image
-                input(type="file" name="avatar" id="avatar" occept="image/*")
+            .avatar-box 
+                +imageBlock("📸 Profile Photo","profileImg","avatar")
             label(for="country") Country
                 <select id="country" name="country" class="form-control" >
                     <option value="Afghanistan">Afghanistan</option>
@@ -261,5 +259,4 @@ block content
             input(type="password" name="password2"  placeholder="Verify Password")
             input(type="submit" value="Join Now")
 
-    script(src="../static/previewImage.js")
     

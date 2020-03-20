@@ -22,5 +22,12 @@
 }
 
 .tours {
+  position: relative !important;
+  max-width: 1760px !important;
+  padding-right: 80px !important;
+  padding-left: 80px !important;
+  margin: 0px auto !important;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(251px, 1fr));
   margin-top: 40px;
 }

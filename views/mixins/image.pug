@@ -1,0 +1,9 @@
+mixin imageBlock(labelTitle, imgId, inputName)
+  label.imgLabel(for=inputName )=labelTitle
+  img.preview-img.hidden(src="" class=imgId)
+  input.imgInput(type="file" name=inputName id=inputName occept="image/*")
+
+mixin imageListBlock(num)
+  input(type="file" id=`fileElem-${num}` name="photoList[]" style="display:none")
+  a(href="#" id=`fileSelect-${num}`) Select some files
+  div(id=`fileList-${num}`)

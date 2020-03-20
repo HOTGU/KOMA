@@ -27,4 +27,4 @@ form.onsubmit = () => {
   description.value = quill.root.innerHTML;
 };
 
-export default editor;
+// export default editor;
