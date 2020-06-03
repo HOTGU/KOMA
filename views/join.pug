@@ -5,7 +5,8 @@ block content
     .form-container
         form(action=routes.join method="post" enctype="multipart/form-data")
             .avatar-box 
-                +imageBlock("📸 Profile Photo","profileImg","avatar")
+                label(for="avatar" class="imgLabel") 📸 Photo
+                input(type="file" class="imgInput" name="avatar" id="avatar" occept="image/*" )
             label(for="country") Country
                 <select id="country" name="country" class="form-control" >
                     <option value="Afghanistan">Afghanistan</option>
@@ -253,10 +254,28 @@ block content
                     <option value="Zambia">Zambia</option>
                     <option value="Zimbabwe">Zimbabwe</option>
                 </select>
-            input(type="name" name="name" placeholder="Name")
-            input(type="email" name="email" placeholder="Email")
-            input(type="password" name="password" placeholder="Password")
-            input(type="password" name="password2"  placeholder="Verify Password")
-            input(type="submit" value="Join Now")
+            input(type="name" name="name" placeholder="Name" required oninvalid="this.setCustomValidity('name is required')")
+            input(type="email" name="email" placeholder="Email" required oninvalid="this.setCustomValidity('email is required')")
+            input(type="password" name="password" placeholder="Password" required
+            oninvalid="this.setCustomValidity('password is required')")
+            input(type="password" name="password2"  placeholder="Verify Password" required oninvalid="this.setCustomValidity('passowrd is required')")
+            input(type="submit" value="Join Now" onsubmit="")
 
+
+    script.
+        var avatar = document.querySelector("input[name=avatar]");
+        var submit = document.querySelector("input[type=submit]");
+        var password = document.querySelector("input[name=password]");
+        var password2 = document.querySelector("input[name=password2]");
+        submit.addEventListener("click", function(){
+            if(!avatar.value) {
+                alert("Avatar is required");
+                return false;
+            } else if (password !== password2){
+                alert("password");
+                return false;
+            } else {
+                return
+            }
+        })
     

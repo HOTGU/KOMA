@@ -22,7 +22,7 @@ const CookieStore = MongoStore(session);
 
 app.use(helmet());
 app.set("view engine", "pug");
-app.set("views", [__dirname + "/views"]);
+// app.set("views", [__dirname + "/views"]);
 app.use("/static", express.static("static"));
 app.use(cookieParser());
 app.use(bodyParser.json());
@@ -33,7 +33,7 @@ app.use(
     secret: process.env.COOKIE_SECRET,
     resave: true,
     saveUninitialized: false,
-    store: new CookieStore({ mongooseConnection: mongoose.connection })
+    store: new CookieStore({ mongooseConnection: mongoose.connection }),
   })
 );
 app.use(passport.initialize());
@@ -43,8 +43,8 @@ app.use("/uploads", express.static("uploads"));
 app.use(localsmiddleware);
 
 app.use(routes.home, globalRouter);
+app.use(routes.tour, tourRouter);
 app.use(routes.guests, guestRouter);
 app.use(routes.master, masterRouter);
-app.use(routes.tour, tourRouter);
 
 export default app;

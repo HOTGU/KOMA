@@ -1,18 +1,18 @@
 mixin tourBlock(tour={}) 
     .tourBlock
         a(href=routes.tourDetail(tour.id))
-            img.tourBlock__avatar(src=tour.avatarUrl width="200px" height="200px")
+            .thumbnail-wrapper.tourBlock__thumbnail
+                .thumbnail
+                    .centered 
+                        img.tourBlock__avatar(src=tour.thumbnail )
             .tourBlock__column
+                h3.tourBlock__title=tour.title
                 .btn-container
                     for concept in tour.concept
                         h5.concept__btn=concept
-                h3.tourBlock__title=tour.title
                 .creator-container
                     img.creator__img(src=tour.creatorImg)
                     h4.creator__name=tour.creatorName
 
-    script.
-        var tourConcept = document.querySelector('.tourBlock__concept');
-        console.dir(tourConcept);
         
     

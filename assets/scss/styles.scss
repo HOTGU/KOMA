@@ -5,16 +5,21 @@
 
 @import "partials/header.scss";
 @import "partials/footer.scss";
-@import "partials/formhead.scss";
 @import "partials/form.scss";
-@import "partials/editor.scss";
+@import "partials/container.scss";
 @import "partials/tourBlock.scss";
-@import "partials/tourDetail.scss";
 @import "partials/uploadImgBtn.scss";
 @import "partials/imgUploadBlock.scss";
+@import "partials/thumbnail.scss";
+@import "partials/photo.scss";
 
+@import "pages/aboutUs.scss";
 @import "pages/login.scss";
 @import "pages/join.scss";
 @import "pages/home.scss";
 @import "pages/tourUpload.scss";
+@import "pages/tourDetail.scss";
 @import "pages/guestDetail.scss";
+@import "pages/aboutMaster.scss";
+@import "pages/tourList.scss";
+@import "pages/editProfile.scss";

@@ -4,20 +4,23 @@
   position: relative;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   label[for="avatar"] {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .profileImg {
     width: 100px;
     height: 100px;
     border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 0%;
+    &:hover {
+      opacity: 0.6;
+    }
   }
 }
 label[for="country"] {
+  color: black;
   display: flex;
   justify-content: space-between;
   align-items: center;

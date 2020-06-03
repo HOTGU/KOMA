@@ -3,12 +3,16 @@ extends layout/form.pug
 block content
     .form-container
         form(action=`/guests${routes.editProfile}`,method="post",enctype="multipart/form-data")
-            .avatar-box
-                label.imgLabel(for="avatar") 📸 Change
-                img.preview-img.profileImg(src=`/${loggedUser.avatarUrl}`)
-                input.imgInput(type="file" name="avatar" id="avatar" occept="image/*")
+            .avatar-box.edit-container
+                .flex-container
+                    .text Before
+                    img(src=`/${loggedUser.avatarUrl}` style="width:100px")
+                .flex-container
+                    .text After
+                    label.imgLabel(for="avatar" style=`background-image=url(/${loggedUser.avatarUrl})`) 📸Change
+                    input.imgInput(type="file" name="avatar" id="avatar" occept="image/*")
             label(for="country") Country
-                <select id="country" name="country" class="form-control" >
+                <select id="country" name="country" class="form-control" required>
                     <option value="Afghanistan">Afghanistan</option>
                     <option value="Åland Islands">Åland Islands</option>
                     <option value="Albania">Albania</option>
@@ -254,7 +258,7 @@ block content
                     <option value="Zambia">Zambia</option>
                     <option value="Zimbabwe">Zimbabwe</option>
                 </select>
-            input(type="text", placeholder="Name", name="name", value=loggedUser.name)
-            input(type="email", placeholder="Email", name="email", value=loggedUser.email)
+            input(type="text", placeholder="Name", name="name", value=loggedUser.name required)
+            input(type="email", placeholder="Email", name="email", value=loggedUser.email required)
             input(type="submit", value="Update Profile")
     

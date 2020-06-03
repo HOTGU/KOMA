@@ -2,14 +2,17 @@ import passport from "passport";
 import routes from "../routes";
 import User from "../models/User";
 
-export const search = (req, res) => res.render("search");
+export const aboutUs = (req, res) => {
+  res.render("aboutUs", { pageTitle: "About Korealtrip" });
+};
 
-export const getJoin = (req, res) => res.render("join", { pageTitle: "Join" });
-
+export const getJoin = (req, res) => {
+  res.render("join", { pageTitle: "Join" });
+};
 export const postJoin = async (req, res, next) => {
   const {
     body: { country, name, email, password, password2 },
-    file: { path }
+    file: { path },
   } = req;
   if (password !== password2) {
     res.status(400);
@@ -20,7 +23,7 @@ export const postJoin = async (req, res, next) => {
         name,
         email,
         country,
-        avatarUrl: path
+        avatarUrl: path,
       });
       await User.register(user, password);
       next();
@@ -31,11 +34,22 @@ export const postJoin = async (req, res, next) => {
   }
 };
 
-export const getLogin = (req, res) => res.render("login", { pageTitle: "Login" });
+export const getLogin = (req, res) => {
+  const {
+    query: { redirect },
+  } = req;
+  if (redirect) {
+    req.session.returnTo = redirect;
+  } else {
+    req.session.returnTo = req.header("Referer");
+  }
+  res.render("login", { pageTitle: "Login" });
+};
 
 export const postLogin = passport.authenticate("local", {
+  successReturnToOrRedirect: routes.home,
   failureRedirect: routes.login,
-  successRedirect: routes.home
+  failureFlash: true,
 });
 
 export const postKakaoLogin = (req, res) => {
@@ -47,17 +61,21 @@ export const logout = (req, res) => {
   res.redirect(routes.home);
 };
 
-export const getMe = (req, res) => {
-  res.render("guestDetail", { pageTitle: "ME", user: req.user });
+export const getMe = async (req, res) => {
+  const user = await User.findById(req.user.id).populate("tours");
+  console.log(user);
+  res.render("guestDetail", { pageTitle: "ME", user });
 };
 
 export const guestDetail = async (req, res) => {
   const {
-    params: { id }
+    params: { id },
   } = req;
   try {
-    const user = await User.findById(id);
-    console.log(user);
+    const user = await User.findById(id).populate({
+      path: "master",
+      path: "tours",
+    });
     res.render("guestDetail", { pageTitle: "Guest Detail", user });
   } catch (error) {
     res.redirect(routes.home);
@@ -68,7 +86,7 @@ export const getChangePassword = (req, res) => res.render("changePassword");
 
 export const postChangePassword = async (req, res) => {
   const {
-    body: { oldPassword, newPassword, newPassword1 }
+    body: { oldPassword, newPassword, newPassword1 },
   } = req;
   try {
     if (newPassword !== newPassword1) {
@@ -90,14 +108,14 @@ export const getEditProfile = (req, res) => {
 export const postEditProfile = async (req, res) => {
   const {
     body: { country, name, email },
-    file
+    file,
   } = req;
   try {
     await User.findByIdAndUpdate(req.user.id, {
       country,
       name,
       email,
-      avatarUrl: file ? file.path : req.user.avatarUrl
+      avatarUrl: file ? file.path : req.user.avatarUrl,
     });
     res.redirect(routes.me);
   } catch (error) {

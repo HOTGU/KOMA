@@ -1,17 +1,49 @@
 extends layout/main.pug
 
 block content
-    .tourDetail-container
-        .tour__thumbnail
-            img(src=`/${tour.imageUrl}` height="200px" width="200px")
-        .tour__info
-            h3.tour__title=tour.title
-            #tour__description
-        .tour__creator
-            img.creator-img(src=`/${tour.creator.avatarUrl}`)
-            h3.creator-name=tour.creator.name
-        
-    script.
-        let tour = !{JSON.stringify(tour)}
-        var description = document.querySelector("#tour__description");
-        description.innerHTML = tour.description;
+    .flex-container.container
+        .thumbnail-wrapper.flex-container__column.media-img
+            .thumbnail
+                .centered
+                    img(src=`/${tour.thumbnailUrl}`)
+        .flex-container__column
+            .tour-info
+                h3.tour-info__title=tour.title
+                .tour-info__concept
+                    for concept in tour.concept
+                        h5.concept-btn=concept
+
+    .flex-container.container
+        .flex-container__column 
+            .list-name Tour program
+        .tour-program.flex-container__column
+            .info-style=tour.description
+
+    .tour-host__container
+        .container.flex-container
+            .flex-container__column
+                .list-name Your host
+            .flex-container__column
+                .tour-host
+                    img.tour-host__img(src=`/${tour.creator.avatarUrl}`)
+                    a(href=routes.guestDetail(tour.creator.id))
+                        h3.tour-host__name=tour.creator.name
+                    .tour-host__info
+                        .info-style=tour.hostself
+
+    
+    .flex-container.container
+        .flex-container__column 
+            .list-name Tour course
+        .flex-container__column
+            -for(var i=0; i < tour.coursePhotos.length; i++)
+                .tour-list
+                    .number-container
+                        .course-number=`${i+1}`
+                    .course-flex          
+                        .thumbnail-wrapper.course-img
+                            .thumbnail
+                                .centered
+                                    img(src=`/${tour.coursePhotos[i]}`)
+                        .course-text
+                            .info-style=tour.courseText[i]

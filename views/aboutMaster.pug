@@ -1,12 +1,26 @@
-extends layout/main
+extends layout/master
 
 block content
-    .master-about__container
-        .master-about__column
-            ul
-                li 자신의 특별한 여행을 공유해보세요  
-                li 글로벌 친구를 사귀어보세요
-                li 수익을 창출해보세요
-        .master-about__column
-            a(href=`/master${routes.masterJoin}`)
-                button Master Join!
+    .master-container
+        .master-about.container
+            .master-about__main 한국여행 호스팅
+            .master-about__title 자신만 아는 특별한 한국을 소개해보세요.
+        .master-about-list.container
+            .master-about-list__column
+                .photo.adventure-photo
+                .about-content
+                    .about-content__title 특별한 장소나 체험을 공유해보세요
+                    .about-content__info 인생맛집, 한국식 도시락 만들기, 따릉이 한강 라이딩, 북한산 등반 등 자신이 경험했던 소중한 추억을 여행객에게 소개해보세요.   
+            .master-about-list__column
+                .photo.network-photo
+                .about-content
+                    .about-content__title 글로벌 친구를 사귀어보세요
+                    .about-content__info 호스팅을 통해 해외방문 없이도 한국을 궁금해하는 다양한 국적의 친구를 만나고 자연스럽게 소통해보세요. 
+            .master-about-list__column
+                .photo.money-photo
+                .about-content
+                    .about-content__title 수익을 창출해보세요
+                    .about-content__info 여가시간을 활용해 취미도 즐기고 수익을 만들어보세요.
+        .master-about-link
+            a(href=`/tour${routes.tourUpload}`)
+                button.uploadBtn 여행 페이지 작성하러 가기

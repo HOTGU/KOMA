@@ -1,14 +1,31 @@
 extends layout/main.pug
+include mixins/tour.pug
+
 
 block content
    .guest-profile
         .guest-profile__header
-            img.g-avatar(src=`/${user.avatarUrl}`)
-            h4.profile__username=user.name
-            h5.profile__usercountry=user.country
+            .profile-photo-container
+                .thumbnail-wrapper
+                    .thumbnail
+                        .centered
+                            img.g-avatar(src=`/${user.avatarUrl}`)
+            .profile__username=user.name
+            .profile__usercountry=user.country
+        if user.master
+            div=user.master.info 
+            div=user.master.language
         if user.id === loggedUser.id
             .guest-profile__btns
                 a(href=`/guests${routes.editProfile}`)
                     button 🔨 Edit Profile
                 a(href=`/guests${routes.changePassword}`)
                     button 🔒 Change Password
+        if user.tours
+            each tour in user.tours
+                +tourBlock({
+                    thumbnail:`/${tour.thumbnailUrl}`,
+                    title:tour.title,
+                    id:tour.id,
+                    concept:tour.concept,
+                })

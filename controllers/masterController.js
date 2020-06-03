@@ -1,15 +1,9 @@
 import Tour from "../models/Tour";
+import Master from "../models/Master";
+import routes from "../routes";
 
-export const home = async (req, res) => {
-  try {
-    const tours = await Tour.find({}).populate("creator");
-    res.render("home", { pageTitle: "home", tours });
-  } catch (error) {
-    console.log(error);
-    res.render("home", { pageTitle: "home", tours: [] });
-  }
+export const home = (req, res) => {
+  res.render("home", { pageTitle: "Home" });
 };
 
 export const about = (req, res) => res.render("aboutMaster", { pageTitle: "about MASTER" });
-
-export const masterJoin = (req, res) => res.render("masterJoin");

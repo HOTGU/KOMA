@@ -1,4 +1,14 @@
 extends layout/main.pug
+include mixins/tour.pug
 
 block content
-    p SEARCH
+    .tours
+      each tour in tours
+        +tourBlock({
+            thumbnail:`/${tour.thumbnailUrl}`,
+            title:tour.title,
+            id:tour.id,
+            concept:tour.concept,
+            creatorName:tour.creator.name,
+            creatorImg:`/${tour.creator.avatarUrl}`
+        })

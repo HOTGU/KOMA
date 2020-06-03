@@ -1,7 +1,7 @@
 import multer from "multer";
 import routes from "./routes";
 
-const multerTour = multer({ dest: "uploads/tours/" });
+const multerTourPhotos = multer({ dest: "uploads/tours/" });
 const multerAvatar = multer({ dest: "uploads/avatar/" });
 
 export const localsmiddleware = (req, res, next) => {
@@ -27,5 +27,15 @@ export const onlyPrivate = (req, res, next) => {
   }
 };
 
-export const uploadTour = multerTour.single("thumbnail");
+export const goLogin = (req, res, next) => {
+  if (req.user) {
+    next();
+  } else {
+    const url = req.originalUrl;
+    res.redirect(`/login/?redirect=${url}`);
+  }
+};
+
+export const imgUpload = multerTourPhotos.fields([{ name: "thumbnail" }, { name: "coursePhoto" }]);
+
 export const uploadAvatar = multerAvatar.single("avatar");

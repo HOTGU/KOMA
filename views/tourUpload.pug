@@ -1,75 +1,309 @@
-extends layout/upload.pug
+extends layout/master
 include mixins/image.pug
+include mixins/concept.pug
 
 block content
-    .tourUpload-container
-        .btn-container
-            button(type="button" id="jsTourTitleBtn") 제목
-            button(type="button" id="jsTourPhotosBtn") 사진
-            button(type="button" id="jsTourConceptBtn") 콘셉트
-            button(type="button" id="jsTourProgramBtn") 여행소개
-            button(type="button" id="jsTourCourseBtn") 여행코스
-        .list-container
-            form(action=`/tour${routes.tourUpload}` method="post" enctype="multipart/form-data" Content-type="application/json")
-                #jsTourTitle.tour-container.hidden
-                    input(type="text" name="title" placeholder="Title" )
-                #jsTourPhotos.tour-container.hidden
-                    div 여행에 사진을 올려보세요
-                    .tumbnail-container
-                        div.thumbnail-info 썸네일사진을 올려보세요 썸네일 사진은 여행을 대표하는 사진이 됩니다.
-                        +imageBlock("📸 Photo","thumbnailImg", "thumbnail")
-                    .photos-container
-                        div 여행소개에 들어갈 사진을 최대 9개올려보세요
-                        +imageListBlock(1)
-                        +imageListBlock(2)
-                        +imageListBlock(3)
-                        +imageListBlock(4)
-                #jsTourConcept.tour-container.hidden
-                    .category-box
-                        ul.category
-                            li
-                                div.category__name Concept Of Your Trip 😎
-                            li
-                                input(type="checkbox" class="tourConcept" id="food" value="food" name="concept[]")
-                                label(for="food") Food
-                            li
-                                input(type="checkbox" class="tourConcept" id="shopping" value="shopping" name="concept[]")
-                                label(for="shopping") Shopping
-                            li
-                                input(type="checkbox" class="tourConcept" id="K-POP" value="KPOP" name="concept[]")
-                                label(for="K-POP") KPOP
-                            li
-                                input(type="checkbox" class="tourConcept" id="beauty" value="beauty" name="concept[]")
-                                label(for="beauty") Beauty
-                            li
-                                input(type="checkbox" class="tourConcept" id="active" value="active" name="concept[]")
-                                label(for="active") Active
-                            li
-                                input(type="checkbox" class="tourConcept" id="traditional" value="traditional" name="concept[]")
-                                label(for="traditional") Traditional
-                            li
-                                input(type="checkbox" class="tourConcept" id="artistic" value="artistic" name="concept[]")
-                                label(for="artistic") Artistic
-                            li
-                                input(type="checkbox" class="tourConcept" id="calm" value="calm" name="concept[]")
-                                label(for="calm") Calm & Cozy
-                            li
-                                input(type="checkbox" class="tourConcept" id="clean" value="clean" name="concept[]")
-                                label(for="clean") Clean
-                            li
-                                input(type="checkbox" class="tourConcept" id="suburban" value="suburban" name="concept[]")
-                                label(for="suburban") Suburban
-                            li
-                                input(type="checkbox" class="tourConcept" id="urban" value="urban" name="concept[]")
-                                label(for="urban") Urban
-                #jsTourProgram.tour-container.hidden
-                    textarea(name="description" )
-                #jsTourCourse.tour-container.hidden
-                    button(type="submit") Upload
+    .master-container
+        .master-about.container
+            .master-about__main 여행페이지 작성
+            .master-about__title 언어를 선택한 후 선택한 언어로 작성해주세요. 
+    form(action=`/tour${routes.tourUpload}` method="post" enctype="multipart/form-data" Content-type="application/json")
+        .upload-container
+            .tour.container
+                .list-container
+                    .info-container
+                        .main 언어
+                        .info__column 자신이 구사할 수 있는 언어를 골라주세요.
+                        .info__column 
+                            div 읽고 쓰고 말할 수 있는 언어여야 합니다.
+                .list-container
+                    .info-container
+                        .info__column.language-select
+                            <select data-placeholder="Choose a Language..." name="hostLanguage">
+                                <option value="">언어선택</option>
+                                <option value="Afrikaans">Afrikaans</option>
+                                <option value="Albanian">Albanian</option>
+                                <option value="Arabic">Arabic</option>
+                                <option value="Armenian">Armenian</option>
+                                <option value="Basque">Basque</option>
+                                <option value="Bengali">Bengali</option>
+                                <option value="Bulgarian">Bulgarian</option>
+                                <option value="Catalan">Catalan</option>
+                                <option value="Cambodian">Cambodian</option>
+                                <option value="Chinese (Mandarin)">Chinese (Mandarin)</option>
+                                <option value="Croatian">Croatian</option>
+                                <option value="Czech">Czech</option>
+                                <option value="Danish">Danish</option>
+                                <option value="Dutch">Dutch</option>
+                                <option value="English">English</option>
+                                <option value="Estonian">Estonian</option>
+                                <option value="Fiji">Fiji</option>
+                                <option value="Finnish">Finnish</option>
+                                <option value="French">French</option>
+                                <option value="Georgian">Georgian</option>
+                                <option value="German">German</option>
+                                <option value="Greek">Greek</option>
+                                <option value="Gujarati">Gujarati</option>
+                                <option value="Hebrew">Hebrew</option>
+                                <option value="Hindi">Hindi</option>
+                                <option value="Hungarian">Hungarian</option>
+                                <option value="Icelandic">Icelandic</option>
+                                <option value="Indonesian">Indonesian</option>
+                                <option value="Irish">Irish</option>
+                                <option value="Italian">Italian</option>
+                                <option value="Japanese">Japanese</option>
+                                <option value="Javanese">Javanese</option>
+                                <option value="Korean">Korean</option>
+                                <option value="Latin">Latin</option>
+                                <option value="Latvian">Latvian</option>
+                                <option value="Lithuanian">Lithuanian</option>
+                                <option value="Macedonian">Macedonian</option>
+                                <option value="Malay">Malay</option>
+                                <option value="Malayalam">Malayalam</option>
+                                <option value="Maltese">Maltese</option>
+                                <option value="Maori">Maori</option>
+                                <option value="Marathi">Marathi</option>
+                                <option value="Mongolian">Mongolian</option>
+                                <option value="Nepali">Nepali</option>
+                                <option value="Norwegian">Norwegian</option>
+                                <option value="Persian">Persian</option>
+                                <option value="Polish">Polish</option>
+                                <option value="Portuguese">Portuguese</option>
+                                <option value="Punjabi">Punjabi</option>
+                                <option value="Quechua">Quechua</option>
+                                <option value="Romanian">Romanian</option>
+                                <option value="Russian">Russian</option>
+                                <option value="Samoan">Samoan</option>
+                                <option value="Serbian">Serbian</option>
+                                <option value="Slovak">Slovak</option>
+                                <option value="Slovenian">Slovenian</option>
+                                <option value="Spanish">Spanish</option>
+                                <option value="Swahili">Swahili</option>
+                                <option value="Swedish ">Swedish </option>
+                                <option value="Tamil">Tamil</option>
+                                <option value="Tatar">Tatar</option>
+                                <option value="Telugu">Telugu</option>
+                                <option value="Thai">Thai</option>
+                                <option value="Tibetan">Tibetan</option>
+                                <option value="Tonga">Tonga</option>
+                                <option value="Turkish">Turkish</option>
+                                <option value="Ukrainian">Ukrainian</option>
+                                <option value="Urdu">Urdu</option>
+                                <option value="Uzbek">Uzbek</option>
+                                <option value="Vietnamese">Vietnamese</option>
+                                <option value="Welsh">Welsh</option>
+                                <option value="Xhosa">Xhosa</option>
+                            </select>
+        .tour.container
+            .list-container
+                .info-container
+                    .main 자기소개
+                    .info__column 자신의 장점, 능력 등을 충분히 설명하세요.
+                    .info__column 
+                        div 여행의 대한 신뢰도와 여행 성사율을 높일 수 있습니다.
+                    .info__column
+                        .languageText
+            .list-container
+                .info-container.hostself-textarea  
+                    .info__column
+                        textarea(type="text" name="hostself" maxlength="1400")
+                        #hostResult 0 / 1400
+        .tour.container
+            .list-container
+                .info-container
+                    .main 제목
+                    .info__column 포스팅할 여행을 한 문장으로 간추려보세요.
+                    .info__column 
+                        div 핵심을 담은 한문장으로 관심을 높힐 수 있습니다.
+                    .info__column
+                        .languageText
+                        
+            .list-container
+                .info-container.title-input  
+                    .info__column
+                        input(type="text" name="title" placeholder="Title" )
+        .tour.container
+            .list-container
+                .info-container
+                    .main 대표사진
+                    .info__column 여행을 대표하는 사진을 업로드하세요.
+                    .info__column 여행의 장소, 컨텐츠, 주제 등을 담은 사진이 필요합니다.
+                        
+            .list-container
+                .info-container.photo-input
+                    label(for="thumbnail" class="imgLabel") 📸 Photo
+                    input(type="file" class="imgInput" name="thumbnail" id="thumbnail" occept="image/*")
+        .tour.container
+            .list-container
+                .info-container
+                    .main 컨셉
+                    .info__column 여행의 컨셉을 제시하는 몇 가지 단어를 선택하세요.
+                    .info__column 공통 관심사를 가진 여행객들의 주목을 이끌 수 있습니다.
+                    
+            .list-container.category-box
+                ul.category
+                    +conceptBlock("Food", "concept[]")
+                    +conceptBlock("Shopping", "concept[]")
+                    +conceptBlock("Kpop", "concept[]")
+                    +conceptBlock("Beauty", "concept[]")
+                    +conceptBlock("sports", "concept[]")
+                    +conceptBlock("Active", "concept[]")
+                    +conceptBlock("Traditional", "concept[]")
+                    +conceptBlock("Artistic", "concept[]")
+                    +conceptBlock("Music", "concept[]")
+                    +conceptBlock("Calm", "concept[]")
+                    +conceptBlock("Medical", "concept[]")
+                    +conceptBlock("Outdoor", "concept[]")
+                    +conceptBlock("Suburban", "concept[]")
+                    +conceptBlock("Urban", "concept[]")
+        .tour.container
+            .list-container
+                .info-container
+                    .main 프로그램
+                    .info__column
+                        div 여행을 설명해보세요.
+                    .info__column
+                        div 여행의 컨셉, 일정, 목적 등 상세히 여행을 설명하세요.
+                    .info__column
+                        .languageText
+            .list-container
+                .info-container.description-textarea
+                    .info__column
+                        textarea(name="description" maxlength="1400")
+                    .info__column
+                        #textareaResult 0 / 1400
+        .course-container
+            .course-head
+                .info-container
+                    .main 코스
+                    .info__column 여행의 코스별로 사진과 코스내용을 추가하세요.
+                    .info__column 사진은 코스와 맞는 사진을 해주시고 내용을 상세히 쓸 수록 좋습니다.
+                    .info__column
+                        .languageText
+                .info-container
+                    .plus-button
+                        input(type="button" id="courseCreateBtn" value="코스 추가 ➕")
+            .course-description
+                .course-description-container
+                    .course-num 1번째 코스
+                    .course-list
+                        .course-photo
+                            label(for="coursePhoto"
+                            id="cl-1" class="courseLabel") 📸 Photo
+                            input(type="file" class="courseInput" name="coursePhoto" id="cp-1" occept="image/*" style="display:none;")
+                        .course-text
+                            textarea(name="courseText")
+                            //- +imageListBlock(1)
+            
+        .uploadBtn-container
+            button(type="submit" class="uploadBtn") 여행 올리기      
+        
+        
+        //- .tour.container
+        //-     .list-container
+        //-         .info-container
+        //-             .main 자기소개
+        //-             .info__column 자신의 장점, 능력 등을 충분히 설명하세요.
+        //-             .info__column 
+        //-                 div 여행의 대한 신뢰도와 여행 성사율을 높일 수 있습니다.
+        //-             .info__column
+        //-                 .languageText
+        //-     .list-container
+        //-         .info-container.hostself-textarea  
+        //-             .info__column
+        //-                 textarea(type="text" name="hostself" maxlength="1400")
+        //-                 #hostResult 0 / 1400
+        //- .tour.container
+        //-     .list-container
+        //-         .info-container
+        //-             .main 제목
+        //-             .info__column 포스팅할 여행을 한 문장으로 간추려보세요.
+        //-             .info__column 
+        //-                 div 핵심을 담은 한문장으로 관심을 높힐 수 있습니다.
+        //-             .info__column
+        //-                 .languageText
+                        
+        //-     .list-container
+        //-         .info-container.title-input  
+        //-             .info__column
+        //-                 input(type="text" name="title" placeholder="Title" )
+        //- .tour.container
+        //-     .list-container
+        //-         .info-container
+        //-             .main 대표사진
+        //-             .info__column 여행을 대표하는 사진을 업로드하세요.
+        //-             .info__column 여행의 장소, 컨텐츠, 주제 등을 담은 사진이 필요합니다.
+                        
+        //-     .list-container
+        //-         .info-container.photo-input
+        //-             label(for="thumbnail" class="imgLabel") 📸 Photo
+        //-             input(type="file" class="imgInput" name="thumbnail" id="thumbnail" occept="image/*")
+        //- .tour.container
+        //-     .list-container
+        //-         .info-container
+        //-             .main 컨셉
+        //-             .info__column 여행의 컨셉을 제시하는 몇 가지 단어를 선택하세요.
+        //-             .info__column 공통 관심사를 가진 여행객들의 주목을 이끌 수 있습니다.
+                    
+        //-     .list-container.category-box
+        //-         ul.category
+        //-             +conceptBlock("Food", "concept[]")
+        //-             +conceptBlock("Shopping", "concept[]")
+        //-             +conceptBlock("Kpop", "concept[]")
+        //-             +conceptBlock("Beauty", "concept[]")
+        //-             +conceptBlock("sports", "concept[]")
+        //-             +conceptBlock("Active", "concept[]")
+        //-             +conceptBlock("Traditional", "concept[]")
+        //-             +conceptBlock("Artistic", "concept[]")
+        //-             +conceptBlock("Music", "concept[]")
+        //-             +conceptBlock("Calm", "concept[]")
+        //-             +conceptBlock("Medical", "concept[]")
+        //-             +conceptBlock("Outdoor", "concept[]")
+        //-             +conceptBlock("Suburban", "concept[]")
+        //-             +conceptBlock("Urban", "concept[]")
+        //- .tour.container
+        //-     .list-container
+        //-         .info-container
+        //-             .main 프로그램
+        //-             .info__column
+        //-                 div 여행을 설명해보세요.
+        //-             .info__column
+        //-                 div 여행의 컨셉, 일정, 목적 등 상세히 여행을 설명하세요.
+        //-             .info__column
+        //-                 .languageText
+        //-     .list-container
+        //-         .info-container.description-textarea
+        //-             .info__column
+        //-                 textarea(name="description" maxlength="1400")
+        //-             .info__column
+        //-                 #textareaResult 0 / 1400
+        //- .course-container
+        //-     .course-head
+        //-         .info-container
+        //-             .main 코스
+        //-             .info__column 여행의 코스별로 사진과 코스내용을 추가하세요.
+        //-             .info__column 사진은 코스와 맞는 사진을 해주시고 내용을 상세히 쓸 수록 좋습니다.
+        //-             .info__column
+        //-                 .languageText
+        //-         .info-container
+        //-             .plus-button
+        //-                 input(type="button" id="courseCreateBtn" value="코스 추가 ➕")
+        //-     .course-description
+        //-         .course-description-container
+        //-             .course-num 1번째 코스
+        //-             .course-list
+        //-                 .course-photo
+        //-                     label(for="coursePhoto"
+        //-                     id="cl-1" class="courseLabel") 📸 Photo
+        //-                     input(type="file" class="courseInput" name="coursePhoto" id="cp-1" occept="image/*" style="display:none;")
+        //-                 .course-text
+        //-                     textarea(name="courseText")
+        //-                     //- +imageListBlock(1)
+            
+        //- .uploadBtn-container
+        //-     button(type="submit" class="uploadBtn") 여행 올리기
     
        
-
-    //- script(src="../static/editor.js")
 
     
         

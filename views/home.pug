@@ -2,13 +2,38 @@ extends layout/main.pug
 include mixins/tour.pug
 
 block content
-    .tours
-        each tour in tours
-            +tourBlock({
-                avatarUrl:tour.imageUrl,
-                title:tour.title,
-                id:tour.id,
-                concept:tour.concept,
-                creatorName:tour.creator.name,
-                creatorImg:tour.creator.avatarUrl
-            })
+    .main-container.container
+        .main__photo.photo
+        .main__content   
+            .main__content__text Meet real korea with us
+            a(href=`/tour${routes.tourList}` class="main__content__btn" id="list-btn") See real Korea
+    .container
+        .aboutUs-list
+            .aboutUs-list__column
+                .list-head
+                    .list-head__num 1
+                    .list-head__title FOOD
+                .list-content Find and try best local restaurant
+            .aboutUs-list__column 
+                .list-head
+                    .list-head__num 2
+                    .list-head__title NETWORK
+                .list-content  Make a friend and receive help from them 
+            .aboutUs-list__column
+                .list-head
+                    .list-head__num 3
+                    .list-head__title CUSTOMIZED
+                .list-content make a journey to your taste 
+            .aboutUs-list__column
+                .list-head
+                    .list-head__num 4
+                    .list-head__title EXPERIENCE
+                .list-content No more stereotyped tour, Do adventure
+            
+    .main-host
+        .container.main-container
+            .main__photo2.photo
+            .main__content 
+                .main__content__text 한국을 소개해보세요.
+                a(href=`/master${routes.about}` class="main__content__btn" id="host-btn")  호스팅 알아보기
+    

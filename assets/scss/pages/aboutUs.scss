@@ -1,0 +1,13 @@
+.aboutUs-main {
+  width: 100%;
+  &__content {
+    background-color: $bgColor2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    font-weight: 800;
+    padding: 100px 60px;
+    border-radius: 8px;
+  }
+}

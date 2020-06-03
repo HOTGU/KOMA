@@ -1,10 +1,10 @@
 // Global
 
 const HOME = "/";
+const ABOUT_US = "/about-us";
 const JOIN = "/join";
 const LOGIN = "/login";
 const LOGOUT = "/logout";
-const SEARCH = "/search";
 
 // Guests
 
@@ -24,6 +24,8 @@ const MASTER_DETAIL = "/:id";
 // Tour
 
 const TOUR = "/tour";
+const SEARCH = "/search";
+const TOUR_LIST = "/list";
 const TOUR_UPLOAD = "/upload";
 const TOUR_DETAIL = "/:id";
 const TOUR_DELETE = "/:id/delete";
@@ -33,12 +35,12 @@ const KAKAO_CALLBACK = "/auth/kakao/callback";
 
 const routes = {
   home: HOME,
+  aboutUs: ABOUT_US,
   join: JOIN,
   login: LOGIN,
   logout: LOGOUT,
-  search: SEARCH,
   guests: GUESTS,
-  guestDetail: id => {
+  guestDetail: (id) => {
     if (id) {
       return `/guests/${id}`;
     } else {
@@ -50,7 +52,7 @@ const routes = {
   master: MASTER,
   about: ABOUT,
   masterJoin: MASTER_JOIN,
-  masterDetail: id => {
+  masterDetail: (id) => {
     if (id) {
       return `/master/${id}`;
     } else {
@@ -58,8 +60,10 @@ const routes = {
     }
   },
   tour: TOUR,
+  search: SEARCH,
+  tourList: TOUR_LIST,
   tourUpload: TOUR_UPLOAD,
-  tourDetail: id => {
+  tourDetail: (id) => {
     if (id) {
       return `/tour/${id}`;
     } else {
@@ -69,7 +73,7 @@ const routes = {
   tourDelete: TOUR_DELETE,
   kakao: KAKAO,
   kakaoCallback: KAKAO_CALLBACK,
-  me: ME
+  me: ME,
 };
 
 export default routes;

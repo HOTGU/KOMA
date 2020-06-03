@@ -1,9 +1,9 @@
 import express from "express";
 import routes from "../routes";
-import { masterJoin, about } from "../controllers/masterController";
+import { about } from "../controllers/masterController";
+import { goLogin } from "../middleware";
 const masterRouter = express.Router();
 
-masterRouter.get(routes.masterJoin, masterJoin);
 masterRouter.get(routes.about, about);
 
 export default masterRouter;

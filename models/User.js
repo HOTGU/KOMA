@@ -4,32 +4,32 @@ import passportLocalMongoose from "passport-local-mongoose";
 const UserSchema = new mongoose.Schema({
   country: {
     type: String,
-    required: "country is required"
+    required: "country is required",
   },
   name: {
     type: String,
-    required: "name is required"
+    required: "name is required",
   },
   email: {
     type: String,
-    required: "email is required"
+    required: "email is required",
   },
   avatarUrl: {
     type: String,
-    required: "image is required"
+    required: "image is required",
   },
   comments: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Comment"
-    }
+      ref: "Comment",
+    },
   ],
   tours: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "User"
-    }
-  ]
+      ref: "Tour",
+    },
+  ],
 });
 
 UserSchema.plugin(passportLocalMongoose, { usernameField: "email" });

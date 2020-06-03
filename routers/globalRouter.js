@@ -8,10 +8,9 @@ import {
   postJoin,
   postLogin,
   getLogin,
-  postKakaoLogin,
-  kakaoLogin,
   getMe,
-  meText
+  meText,
+  aboutUs,
 } from "../controllers/guestController";
 import { home } from "../controllers/masterController";
 import { onlyPublic, onlyPrivate, uploadAvatar } from "../middleware";
@@ -21,13 +20,13 @@ const globalRouter = express.Router();
 globalRouter.get(routes.join, onlyPublic, getJoin);
 globalRouter.post(routes.join, onlyPublic, uploadAvatar, postJoin, postLogin);
 
+globalRouter.get(routes.aboutUs, aboutUs);
+
 globalRouter.get(routes.login, onlyPublic, getLogin);
 globalRouter.post(routes.login, onlyPublic, postLogin);
 
 globalRouter.get(routes.home, home);
 globalRouter.get(routes.logout, onlyPrivate, logout);
-
-globalRouter.get(routes.search, search);
 
 globalRouter.get(routes.me, getMe);
 

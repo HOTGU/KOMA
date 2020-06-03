@@ -1,0 +1,33 @@
+.thumbnail-wrapper {
+  position: relative !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+  .thumbnail {
+    padding-top: 120%;
+    position: relative !important;
+    background-position: 50% 50% !important;
+    background-repeat: no-repeat !important;
+    .centered {
+      -webkit-box-pack: center !important;
+      -webkit-box-align: center !important;
+      position: absolute !important;
+      top: 0px !important;
+      bottom: 0px !important;
+      left: 0px !important;
+      right: 0px !important;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      img {
+        top: 0px !important;
+        bottom: 0px !important;
+        left: 0px !important;
+        right: 0px !important;
+        object-fit: cover;
+        height: 100% !important;
+        width: 100% !important;
+        position: static !important;
+      }
+    }
+  }
+}

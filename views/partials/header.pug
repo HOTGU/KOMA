@@ -1,8 +1,8 @@
-header.header
+header.header.container
     .header__wrapper
         .header__column
             a(href=routes.home)
-                span KOMA'
+                span Koreal Trip
         .header__column
             if !loggedUser
                 ul
@@ -14,12 +14,9 @@ header.header
                             | LOGIN
             else 
                 ul
-                    li
-                        a(href=`/tour${routes.tourUpload}`)
-                            | UPLOAD
-                    li
+                    li.hosting-btn
                         a(href=`/master${routes.about}`)
-                            | MASTER
+                            | Tour Hosting
                     li
                         a(href=routes.me)
                             | PROFILE

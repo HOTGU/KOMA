@@ -4,6 +4,6 @@ mixin imageBlock(labelTitle, imgId, inputName)
   input.imgInput(type="file" name=inputName id=inputName occept="image/*")
 
 mixin imageListBlock(num)
-  input(type="file" id=`fileElem-${num}` name="photoList[]" style="display:none")
-  a(href="#" id=`fileSelect-${num}`) Select some files
+  input(type="file" id=`fileElem-${num}` name="coursePhoto" style="display:none")
+  label(href="#" id=`fileSelect-${num}` class="imgLabel") 📸Photo
   div(id=`fileList-${num}`)

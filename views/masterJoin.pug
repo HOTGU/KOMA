@@ -1,15 +1,86 @@
 extends layout/main.pug
 
 block content
-    .form-container
-        label(for="avatar") Choose Avatar<span style="color: red !important; display: inline; float: none;">*</span>
-            input(type="file" name="avatar" id="avatar" accept="img/*")
-        label(for="liveKorea") How long have you lived in KOREA? 
-            select(name="liveKorea" id="liveKorea")
-                option 1 Year
-                option 2 Year
-                option 3 Year
-                option 4 Year
-                option 5 Year
-                option More than 5 Year
-        input(type="text")
+    if loggedUser.master === undefined
+        .form-container
+            form(action=`/master${routes.masterJoin}` method="post")
+                label(for="masterInfo") 자신의 소개글을 작성해보세요.
+                textarea(name="masterInfo")
+                label(for="masterLanguage") 할 수 있는 언어를 고르세요.
+                <select data-placeholder="Choose a Language..." name="masterLanguage">
+                    <option value="Afrikaans">Afrikaans</option>
+                    <option value="Albanian">Albanian</option>
+                    <option value="Arabic">Arabic</option>
+                    <option value="Armenian">Armenian</option>
+                    <option value="Basque">Basque</option>
+                    <option value="Bengali">Bengali</option>
+                    <option value="Bulgarian">Bulgarian</option>
+                    <option value="Catalan">Catalan</option>
+                    <option value="Cambodian">Cambodian</option>
+                    <option value="Chinese (Mandarin)">Chinese (Mandarin)</option>
+                    <option value="Croatian">Croatian</option>
+                    <option value="Czech">Czech</option>
+                    <option value="Danish">Danish</option>
+                    <option value="Dutch">Dutch</option>
+                    <option value="English">English</option>
+                    <option value="Estonian">Estonian</option>
+                    <option value="Fiji">Fiji</option>
+                    <option value="Finnish">Finnish</option>
+                    <option value="French">French</option>
+                    <option value="Georgian">Georgian</option>
+                    <option value="German">German</option>
+                    <option value="Greek">Greek</option>
+                    <option value="Gujarati">Gujarati</option>
+                    <option value="Hebrew">Hebrew</option>
+                    <option value="Hindi">Hindi</option>
+                    <option value="Hungarian">Hungarian</option>
+                    <option value="Icelandic">Icelandic</option>
+                    <option value="Indonesian">Indonesian</option>
+                    <option value="Irish">Irish</option>
+                    <option value="Italian">Italian</option>
+                    <option value="Japanese">Japanese</option>
+                    <option value="Javanese">Javanese</option>
+                    <option value="Korean">Korean</option>
+                    <option value="Latin">Latin</option>
+                    <option value="Latvian">Latvian</option>
+                    <option value="Lithuanian">Lithuanian</option>
+                    <option value="Macedonian">Macedonian</option>
+                    <option value="Malay">Malay</option>
+                    <option value="Malayalam">Malayalam</option>
+                    <option value="Maltese">Maltese</option>
+                    <option value="Maori">Maori</option>
+                    <option value="Marathi">Marathi</option>
+                    <option value="Mongolian">Mongolian</option>
+                    <option value="Nepali">Nepali</option>
+                    <option value="Norwegian">Norwegian</option>
+                    <option value="Persian">Persian</option>
+                    <option value="Polish">Polish</option>
+                    <option value="Portuguese">Portuguese</option>
+                    <option value="Punjabi">Punjabi</option>
+                    <option value="Quechua">Quechua</option>
+                    <option value="Romanian">Romanian</option>
+                    <option value="Russian">Russian</option>
+                    <option value="Samoan">Samoan</option>
+                    <option value="Serbian">Serbian</option>
+                    <option value="Slovak">Slovak</option>
+                    <option value="Slovenian">Slovenian</option>
+                    <option value="Spanish">Spanish</option>
+                    <option value="Swahili">Swahili</option>
+                    <option value="Swedish ">Swedish </option>
+                    <option value="Tamil">Tamil</option>
+                    <option value="Tatar">Tatar</option>
+                    <option value="Telugu">Telugu</option>
+                    <option value="Thai">Thai</option>
+                    <option value="Tibetan">Tibetan</option>
+                    <option value="Tonga">Tonga</option>
+                    <option value="Turkish">Turkish</option>
+                    <option value="Ukrainian">Ukrainian</option>
+                    <option value="Urdu">Urdu</option>
+                    <option value="Uzbek">Uzbek</option>
+                    <option value="Vietnamese">Vietnamese</option>
+                    <option value="Welsh">Welsh</option>
+                    <option value="Xhosa">Xhosa</option>
+                </select>
+                input(type="submit" value="master join")
+    else 
+        p 이미 마스터로 가입하셨습니다!

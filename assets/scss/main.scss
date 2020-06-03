@@ -1,6 +1,6 @@
 body {
-  background-color: $white;
-  color: $black;
+  background-color: $bgColor;
+  color: white;
   font-size: 14px;
 }
 
@@ -8,12 +8,6 @@ main {
   width: 100%;
   margin: 0 auto;
   min-height: 70vh;
-}
-
-.g-avatar {
-  border-radius: 100%;
-  width: 200px;
-  height: 200px;
 }
 
 .hidden {

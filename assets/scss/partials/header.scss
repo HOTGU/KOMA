@@ -1,6 +1,4 @@
 .header {
-  width: 100%;
-  padding: 0 20px;
   font-family: "Montserrat";
   .header__wrapper {
     width: 100%;
@@ -14,14 +12,21 @@
     .header__column {
       &:first-child {
         font-size: 40px;
-        font-weight: 900;
+        font-weight: 600;
+        color: white;
       }
       &:nth-child(2) {
         ul {
           display: flex;
           font-size: 20px;
           font-weight: 600;
+          .hosting-btn {
+            background-color: black;
+            padding: 10px 20px;
+            border-radius: 5px;
+          }
           li {
+            padding: 10px 0;
             &:not(:last-child) {
               margin-right: 15px;
             }
@@ -41,11 +46,21 @@
   text-align: center;
 }
 
+.master__head {
+  padding: 40px 0;
+  background-color: black;
+  font-size: 30px;
+  font-family: "Montserrat";
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .upload__head {
-  width: 100%;
-  padding-left: 40px;
-  padding-right: 40px;
-  margin: 10px 0;
+  position: fixed;
+  top: 10;
+  right: 50;
   font-family: "Montserrat";
   font-size: 40px;
   font-weight: 600;
