@@ -91,50 +91,6 @@
   }
 }
 
-.upload-container {
-  background-color: black;
-  .tour {
-    font-family: "Noto Sans KR", sans-serif;
-    font-size: 25px;
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(430px, 1fr));
-    grid-template-rows: auto;
-    justify-content: center;
-    align-items: center;
-    padding: 40px 10px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    .list-container {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: 20px 0;
-      .info-container {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: flex-start;
-        .main {
-          display: flex;
-          justify-content: center;
-          align-self: center;
-          background-color: $bgColor;
-          color: white;
-          padding: 10px 20px;
-          border-radius: 10px;
-          font-size: 40px;
-          margin-bottom: 20px;
-        }
-        .info__column {
-          padding-bottom: 5px;
-          font-size: 20px;
-        }
-      }
-    }
-  }
-}
-
 #map {
   border-radius: 10px;
 }

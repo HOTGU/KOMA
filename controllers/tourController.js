@@ -42,7 +42,21 @@ export const tourList = async (req, res) => {
   }
 };
 
-export const getTourUpload = (req, res) => res.render("tourUpload");
+export const getTourUploadInfo = (req, res) => {
+  res.render("tourUploadInfo", { user: req.user });
+};
+
+export const postTourUploadInfo = (req, res) => {
+  const {
+    body: { place, hostLanguage },
+  } = req;
+  console.log(place, hostLanguage);
+  res.render("tourUpload", { place, hostLanguage });
+};
+
+export const getTourUpload = (req, res) => {
+  res.render("tourUpload");
+};
 
 export const postTourUpload = async (req, res) => {
   const {

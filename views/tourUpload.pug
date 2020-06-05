@@ -6,108 +6,11 @@ block content
     .master-container
         .master-about.container
             .master-about__main 여행페이지 작성
-            .master-about__title 언어를 선택한 후 선택한 언어로 작성해주세요. 
+            .master-about__title=`아래의 여행페이지를 ${hostLanguage}(으)로 작성해주세요.`  
     form(action=`/tour${routes.tourUpload}` method="post" enctype="multipart/form-data" Content-type="application/json")
-        input(type="text" id="meet-place" style="display:block")
-        .upload-container
-            .tour.container
-                .list-container
-                    .info-container
-                        .main 언어
-                        .info__column 자신이 구사할 수 있는 언어를 골라주세요.
-                        .info__column 
-                            div 읽고 쓰고 말할 수 있는 언어여야 합니다.
-                .list-container
-                    .info-container
-                        .info__column.language-select
-                            <select data-placeholder="Choose a Language..." name="hostLanguage">
-                                <option value="">언어선택</option>
-                                <option value="Afrikaans">Afrikaans</option>
-                                <option value="Albanian">Albanian</option>
-                                <option value="Arabic">Arabic</option>
-                                <option value="Armenian">Armenian</option>
-                                <option value="Basque">Basque</option>
-                                <option value="Bengali">Bengali</option>
-                                <option value="Bulgarian">Bulgarian</option>
-                                <option value="Catalan">Catalan</option>
-                                <option value="Cambodian">Cambodian</option>
-                                <option value="Chinese (Mandarin)">Chinese (Mandarin)</option>
-                                <option value="Croatian">Croatian</option>
-                                <option value="Czech">Czech</option>
-                                <option value="Danish">Danish</option>
-                                <option value="Dutch">Dutch</option>
-                                <option value="English">English</option>
-                                <option value="Estonian">Estonian</option>
-                                <option value="Fiji">Fiji</option>
-                                <option value="Finnish">Finnish</option>
-                                <option value="French">French</option>
-                                <option value="Georgian">Georgian</option>
-                                <option value="German">German</option>
-                                <option value="Greek">Greek</option>
-                                <option value="Gujarati">Gujarati</option>
-                                <option value="Hebrew">Hebrew</option>
-                                <option value="Hindi">Hindi</option>
-                                <option value="Hungarian">Hungarian</option>
-                                <option value="Icelandic">Icelandic</option>
-                                <option value="Indonesian">Indonesian</option>
-                                <option value="Irish">Irish</option>
-                                <option value="Italian">Italian</option>
-                                <option value="Japanese">Japanese</option>
-                                <option value="Javanese">Javanese</option>
-                                <option value="Korean">Korean</option>
-                                <option value="Latin">Latin</option>
-                                <option value="Latvian">Latvian</option>
-                                <option value="Lithuanian">Lithuanian</option>
-                                <option value="Macedonian">Macedonian</option>
-                                <option value="Malay">Malay</option>
-                                <option value="Malayalam">Malayalam</option>
-                                <option value="Maltese">Maltese</option>
-                                <option value="Maori">Maori</option>
-                                <option value="Marathi">Marathi</option>
-                                <option value="Mongolian">Mongolian</option>
-                                <option value="Nepali">Nepali</option>
-                                <option value="Norwegian">Norwegian</option>
-                                <option value="Persian">Persian</option>
-                                <option value="Polish">Polish</option>
-                                <option value="Portuguese">Portuguese</option>
-                                <option value="Punjabi">Punjabi</option>
-                                <option value="Quechua">Quechua</option>
-                                <option value="Romanian">Romanian</option>
-                                <option value="Russian">Russian</option>
-                                <option value="Samoan">Samoan</option>
-                                <option value="Serbian">Serbian</option>
-                                <option value="Slovak">Slovak</option>
-                                <option value="Slovenian">Slovenian</option>
-                                <option value="Spanish">Spanish</option>
-                                <option value="Swahili">Swahili</option>
-                                <option value="Swedish ">Swedish </option>
-                                <option value="Tamil">Tamil</option>
-                                <option value="Tatar">Tatar</option>
-                                <option value="Telugu">Telugu</option>
-                                <option value="Thai">Thai</option>
-                                <option value="Tibetan">Tibetan</option>
-                                <option value="Tonga">Tonga</option>
-                                <option value="Turkish">Turkish</option>
-                                <option value="Ukrainian">Ukrainian</option>
-                                <option value="Urdu">Urdu</option>
-                                <option value="Uzbek">Uzbek</option>
-                                <option value="Vietnamese">Vietnamese</option>
-                                <option value="Welsh">Welsh</option>
-                                <option value="Xhosa">Xhosa</option>
-                            </select>
-            .tour.container
-                .list-container
-                    .info-container
-                        .main 장소
-                        .info__column 여행객과 만날 장소를 검색하세요.
-                .list-container
-                    .info-container
-                        .info__column
-                            input(type="button" onclick="sample5_execDaumPostcode()" value="주소 검색" required)
-                            .result.hidden
-                                <div id="map" style="width:400px;height:400px;margin-top:10px"></div>
-                                div(id="address")
-
+        input(type="text" name="meet-place" style="display:block" value=`${place}`)
+        input(type="text" name="hostLanguage" style="display:block" value=`${hostLanguage}`)
+        
         .flex-container.container
             .flex-container__column
                 .photo-input
@@ -248,73 +151,13 @@ block content
         //-                     textarea(name="courseText")
         //-                     //- +imageListBlock(1)
             
-        //- .uploadBtn-container
-        //-     button(type="submit" class="uploadBtn") 여행 올리기
+        .uploadBtn-container
+            button(type="submit" class="uploadBtn") 여행 올리기
     
        
 
     
         
-
-
-
-
-    script.
-                
-        var mapContainer = document.getElementById("map"), // 지도를 표시할 div
-        mapOption = {
-            center: new daum.maps.LatLng(37.537187, 127.005476), // 지도의 중심좌표
-            level: 4, // 지도의 확대 레벨
-        };
-
-        //지도를 미리 생성
-        var map = new daum.maps.Map(mapContainer, mapOption);
-        //주소-좌표 변환 객체를 생성
-        var geocoder = new daum.maps.services.Geocoder();
-        //마커를 미리 생성
-        var marker = new daum.maps.Marker({
-            position: new daum.maps.LatLng(37.537187, 127.005476),
-            map: map,
-        });
-
-
-        function sample5_execDaumPostcode() {
-            new daum.Postcode({
-                oncomplete: function (data) {
-                    const resultShow = document.querySelector(".result")
-                    var addr = data.address; // 최종 주소 변수
-                    console.log(data)
-                    // 주소 정보를 해당 필드에 넣는다.
-                    document.getElementById("meet-place").value = data.addressEnglish;
-
-                    document.getElementById("address").innerHTML = addr;
-
-                    // 결과창 표시
-                    resultShow.classList.remove("hidden");
-
-                    // 주소로 상세 정보를 검색
-                    geocoder.addressSearch(data.address, function (results, status) {
-                        // 정상적으로 검색이 완료됐으면
-                        
-
-                        if (status === daum.maps.services.Status.OK) {
-                            var result = results[0]; //첫번째 결과의 값을 활용
-
-
-                            // 해당 주소에 대한 좌표를 받아서
-                            var coords = new daum.maps.LatLng(result.y, result.x);
-                            // 지도를 보여준다.
-                            mapContainer.style.display = "block";
-                            map.relayout();
-                            // 지도 중심을 변경한다.
-                            map.setCenter(coords);
-                            // 마커를 결과값으로 받은 위치로 옮긴다.
-                            marker.setPosition(coords);
-                        }
-                    });
-                },
-            }).open();
-        }
 
         
         

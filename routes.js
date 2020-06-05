@@ -29,6 +29,7 @@ const TOUR_LIST = "/list";
 const TOUR_UPLOAD = "/upload";
 const TOUR_DETAIL = "/:id";
 const TOUR_DELETE = "/:id/delete";
+const TOUR_UPLOAD_INFO = "/upload/info";
 
 const KAKAO = "/auth/kakao";
 const KAKAO_CALLBACK = "/auth/kakao/callback";
@@ -63,6 +64,7 @@ const routes = {
   search: SEARCH,
   tourList: TOUR_LIST,
   tourUpload: TOUR_UPLOAD,
+  tourUploadInfo: TOUR_UPLOAD_INFO,
   tourDetail: (id) => {
     if (id) {
       return `/tour/${id}`;
