@@ -1,5 +1,6 @@
 const path = require("path");
 const autoprefixer = require("autoprefixer");
+const api_key = process.env.KAKAO_KEY;
 const ExtractCSS = require("extract-text-webpack-plugin");
 
 const MODE = process.env.WEBPACK_ENV;

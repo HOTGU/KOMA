@@ -8,6 +8,7 @@ block content
             .master-about__main 여행페이지 작성
             .master-about__title 언어를 선택한 후 선택한 언어로 작성해주세요. 
     form(action=`/tour${routes.tourUpload}` method="post" enctype="multipart/form-data" Content-type="application/json")
+        input(type="text" id="meet-place" style="display:block")
         .upload-container
             .tour.container
                 .list-container
@@ -94,111 +95,58 @@ block content
                                 <option value="Welsh">Welsh</option>
                                 <option value="Xhosa">Xhosa</option>
                             </select>
-        .tour.container
-            .list-container
-                .info-container
-                    .main 자기소개
-                    .info__column 자신의 장점, 능력 등을 충분히 설명하세요.
-                    .info__column 
-                        div 여행의 대한 신뢰도와 여행 성사율을 높일 수 있습니다.
-                    .info__column
-                        .languageText
-            .list-container
-                .info-container.hostself-textarea  
-                    .info__column
-                        textarea(type="text" name="hostself" maxlength="1400")
-                        #hostResult 0 / 1400
-        .tour.container
-            .list-container
-                .info-container
-                    .main 제목
-                    .info__column 포스팅할 여행을 한 문장으로 간추려보세요.
-                    .info__column 
-                        div 핵심을 담은 한문장으로 관심을 높힐 수 있습니다.
-                    .info__column
-                        .languageText
-                        
-            .list-container
-                .info-container.title-input  
-                    .info__column
-                        input(type="text" name="title" placeholder="Title" )
-        .tour.container
-            .list-container
-                .info-container
-                    .main 대표사진
-                    .info__column 여행을 대표하는 사진을 업로드하세요.
-                    .info__column 여행의 장소, 컨텐츠, 주제 등을 담은 사진이 필요합니다.
-                        
-            .list-container
-                .info-container.photo-input
-                    label(for="thumbnail" class="imgLabel") 📸 Photo
+            .tour.container
+                .list-container
+                    .info-container
+                        .main 장소
+                        .info__column 여행객과 만날 장소를 검색하세요.
+                .list-container
+                    .info-container
+                        .info__column
+                            input(type="button" onclick="sample5_execDaumPostcode()" value="주소 검색" required)
+                            .result.hidden
+                                <div id="map" style="width:400px;height:400px;margin-top:10px"></div>
+                                div(id="address")
+
+        .flex-container.container
+            .flex-container__column
+                .photo-input
+                    label(for="thumbnail" class="imgLabel") 
+                        span 대표사진➕
                     input(type="file" class="imgInput" name="thumbnail" id="thumbnail" occept="image/*")
-        .tour.container
-            .list-container
-                .info-container
-                    .main 컨셉
-                    .info__column 여행의 컨셉을 제시하는 몇 가지 단어를 선택하세요.
-                    .info__column 공통 관심사를 가진 여행객들의 주목을 이끌 수 있습니다.
-                    
-            .list-container.category-box
-                ul.category
-                    +conceptBlock("Food", "concept[]")
-                    +conceptBlock("Shopping", "concept[]")
-                    +conceptBlock("Kpop", "concept[]")
-                    +conceptBlock("Beauty", "concept[]")
-                    +conceptBlock("sports", "concept[]")
-                    +conceptBlock("Active", "concept[]")
-                    +conceptBlock("Traditional", "concept[]")
-                    +conceptBlock("Artistic", "concept[]")
-                    +conceptBlock("Music", "concept[]")
-                    +conceptBlock("Calm", "concept[]")
-                    +conceptBlock("Medical", "concept[]")
-                    +conceptBlock("Outdoor", "concept[]")
-                    +conceptBlock("Suburban", "concept[]")
-                    +conceptBlock("Urban", "concept[]")
-        .tour.container
-            .list-container
-                .info-container
-                    .main 프로그램
-                    .info__column
-                        div 여행을 설명해보세요.
-                    .info__column
-                        div 여행의 컨셉, 일정, 목적 등 상세히 여행을 설명하세요.
-                    .info__column
-                        .languageText
-            .list-container
+            .flex-container__column
+                .tour-info
+                    .title-input
+                        input(type="text" name="title" placeholder="포스팅할 여행을 한 문장으로 간추려보세요." )
+                    .category-box
+                        div 여행의 컨셉을 제시하는 몇 가지 단어를 선택하세요.
+                        ul.category
+                            +conceptBlock("Food", "concept[]")
+                            +conceptBlock("Shopping", "concept[]")
+                            +conceptBlock("Kpop", "concept[]")
+                            +conceptBlock("Beauty", "concept[]")
+                            +conceptBlock("sports", "concept[]")
+                            +conceptBlock("Active", "concept[]")
+                            +conceptBlock("Traditional", "concept[]")
+                            +conceptBlock("Artistic", "concept[]")
+                            +conceptBlock("Music", "concept[]")
+                            +conceptBlock("Calm", "concept[]")
+                            +conceptBlock("Medical", "concept[]")
+                            +conceptBlock("Outdoor", "concept[]")
+                            +conceptBlock("Suburban", "concept[]")
+                            +conceptBlock("Urban", "concept[]")
+        
+            
+        .flex-container.container
+            .flex-container__column
+                .list-name 여행의 컨셉, 일정, 목적 등 상세히 여행을 설명하세요.
+            .flex-container__column
                 .info-container.description-textarea
                     .info__column
                         textarea(name="description" maxlength="1400")
                     .info__column
                         #textareaResult 0 / 1400
-        .course-container
-            .course-head
-                .info-container
-                    .main 코스
-                    .info__column 여행의 코스별로 사진과 코스내용을 추가하세요.
-                    .info__column 사진은 코스와 맞는 사진을 해주시고 내용을 상세히 쓸 수록 좋습니다.
-                    .info__column
-                        .languageText
-                .info-container
-                    .plus-button
-                        input(type="button" id="courseCreateBtn" value="코스 추가 ➕")
-            .course-description
-                .course-description-container
-                    .course-num 1번째 코스
-                    .course-list
-                        .course-photo
-                            label(for="coursePhoto"
-                            id="cl-1" class="courseLabel") 📸 Photo
-                            input(type="file" class="courseInput" name="coursePhoto" id="cp-1" occept="image/*" style="display:none;")
-                        .course-text
-                            textarea(name="courseText")
-                            //- +imageListBlock(1)
-            
-        .uploadBtn-container
-            button(type="submit" class="uploadBtn") 여행 올리기      
-        
-        
+    
         //- .tour.container
         //-     .list-container
         //-         .info-container
@@ -307,6 +255,71 @@ block content
 
     
         
+
+
+
+
+    script.
+                
+        var mapContainer = document.getElementById("map"), // 지도를 표시할 div
+        mapOption = {
+            center: new daum.maps.LatLng(37.537187, 127.005476), // 지도의 중심좌표
+            level: 4, // 지도의 확대 레벨
+        };
+
+        //지도를 미리 생성
+        var map = new daum.maps.Map(mapContainer, mapOption);
+        //주소-좌표 변환 객체를 생성
+        var geocoder = new daum.maps.services.Geocoder();
+        //마커를 미리 생성
+        var marker = new daum.maps.Marker({
+            position: new daum.maps.LatLng(37.537187, 127.005476),
+            map: map,
+        });
+
+
+        function sample5_execDaumPostcode() {
+            new daum.Postcode({
+                oncomplete: function (data) {
+                    const resultShow = document.querySelector(".result")
+                    var addr = data.address; // 최종 주소 변수
+                    console.log(data)
+                    // 주소 정보를 해당 필드에 넣는다.
+                    document.getElementById("meet-place").value = data.addressEnglish;
+
+                    document.getElementById("address").innerHTML = addr;
+
+                    // 결과창 표시
+                    resultShow.classList.remove("hidden");
+
+                    // 주소로 상세 정보를 검색
+                    geocoder.addressSearch(data.address, function (results, status) {
+                        // 정상적으로 검색이 완료됐으면
+                        
+
+                        if (status === daum.maps.services.Status.OK) {
+                            var result = results[0]; //첫번째 결과의 값을 활용
+
+
+                            // 해당 주소에 대한 좌표를 받아서
+                            var coords = new daum.maps.LatLng(result.y, result.x);
+                            // 지도를 보여준다.
+                            mapContainer.style.display = "block";
+                            map.relayout();
+                            // 지도 중심을 변경한다.
+                            map.setCenter(coords);
+                            // 마커를 결과값으로 받은 위치로 옮긴다.
+                            marker.setPosition(coords);
+                        }
+                    });
+                },
+            }).open();
+        }
+
+        
+        
+        
+
         
     
     

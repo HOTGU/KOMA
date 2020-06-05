@@ -1,6 +1,98 @@
+.photo-input {
+  width: 347px;
+  margin-left: auto;
+  margin-right: auto;
+  input[id="thumbnail"] {
+    position: absolute;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+  }
+  label[for="thumbnail"] {
+    display: inline-block;
+    padding: 0.5em 0.75em;
+    width: 100%;
+    height: 417px;
+    color: black;
+    font-size: inherit;
+    line-height: normal;
+    vertical-align: middle;
+    background-color: $white;
+    font-size: 18px;
+    color: $black;
+    cursor: pointer;
+    span {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+    }
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}
+
+.title-input {
+  margin-top: 10px;
+  font-size: 40px;
+  input {
+    padding: 10px 15px;
+    width: 100%;
+    font-size: 20px;
+    font-family: "Noto Sans KR", sans-serif;
+  }
+}
+
+.category-box {
+  width: 100%;
+  background-color: $white;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  border-radius: 20px;
+  ul {
+    padding: 20px;
+    font-size: 17px;
+    li {
+      display: inline;
+      .category__name {
+        margin-bottom: 10px;
+      }
+      label {
+        display: inline-block;
+        border: 2px solid black;
+        color: $black;
+        border-radius: 25px;
+        white-space: nowrap;
+        margin: 3px 2px;
+        padding: 8px 12px;
+        background-color: $white;
+        cursor: pointer;
+        &:hover {
+          border: 2px solid $bgColor;
+          color: $bgColor;
+        }
+      }
+      input[type="checkbox"] {
+        position: absolute;
+        display: none;
+        opacity: 0;
+      }
+      input[type="checkbox"]:checked + label {
+        border: 2px solid $bgColor;
+        background-color: $bgColor2;
+        color: $white;
+        transition: all 0.2s;
+      }
+    }
+  }
+}
+
 .upload-container {
   background-color: black;
-
   .tour {
     font-family: "Noto Sans KR", sans-serif;
     font-size: 25px;
@@ -40,6 +132,19 @@
         }
       }
     }
+  }
+}
+
+#map {
+  border-radius: 10px;
+}
+input[value="주소 검색"] {
+  font-size: 20px;
+  padding: 15px 30px;
+  background-color: white;
+  &:hover {
+    opacity: 0.8;
+    cursor: pointer;
   }
 }
 
@@ -174,51 +279,12 @@
     }
   }
 }
-.photo-input {
-  width: 250px;
-  margin-left: auto;
-  margin-right: auto;
-  input[id="thumbnail"] {
-    position: absolute;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    border: 0;
-  }
-  label[for="thumbnail"] {
-    display: inline-block;
-    padding: 0.5em 0.75em;
-    width: 100%;
-    height: 300px;
-    color: black;
-    font-size: inherit;
-    line-height: normal;
-    vertical-align: middle;
-    background-color: $white;
-    font-size: 18px;
-    color: $black;
-    cursor: pointer;
-    &:hover {
-      opacity: 0.8;
-    }
-  }
-}
-
-.title-input {
-  input {
-    padding: 10px 15px;
-    width: 350px;
-    font-size: 20px;
-    font-family: "Noto Sans KR", sans-serif;
-  }
-}
 
 .description-textarea,
 .hostself-textarea,
 .course-text {
   textarea {
-    width: 450px;
+    width: 100%;
     height: 300px;
     font-size: 18px;
     padding: 10px;
@@ -227,50 +293,6 @@
   }
   textarea:focus {
     outline: none;
-  }
-}
-
-.category-box {
-  width: 450px;
-  background-color: $white;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  border-radius: 20px;
-  ul {
-    padding: 20px;
-    font-size: 17px;
-    li {
-      display: inline;
-      .category__name {
-        margin-bottom: 10px;
-      }
-      label {
-        display: inline-block;
-        border: 2px solid black;
-        color: $black;
-        border-radius: 25px;
-        white-space: nowrap;
-        margin: 3px 2px;
-        padding: 8px 12px;
-        background-color: $white;
-        cursor: pointer;
-        &:hover {
-          border: 2px solid $bgColor;
-          color: $bgColor;
-        }
-      }
-      input[type="checkbox"] {
-        position: absolute;
-        display: none;
-        opacity: 0;
-      }
-      input[type="checkbox"]:checked + label {
-        border: 2px solid $bgColor;
-        background-color: $bgColor2;
-        color: $white;
-        transition: all 0.2s;
-      }
-    }
   }
 }
 

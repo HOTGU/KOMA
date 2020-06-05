@@ -69,3 +69,17 @@
     font-size: 20px;
   }
 }
+
+.tour__header {
+  background-color: black;
+  width: 100%;
+  .header-wrapper1 {
+    font-size: 30px;
+    font-weight: 700;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px 40px;
+    font-family: "Montserrat";
+  }
+}

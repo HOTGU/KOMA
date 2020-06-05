@@ -1,0 +1,24 @@
+header.tour__header
+  .header-wrapper1
+    a(href=routes.home)
+        span Koreal Trip
+  //- .header__column
+      if !loggedUser
+          ul
+              li
+                  a(href=routes.join)
+                      | JOIN
+              li
+                  a(href=routes.login)
+                      | LOGIN
+      else 
+          ul
+              li.hosting-btn
+                  a(href=`/master${routes.about}`)
+                      | Tour Hosting
+              li
+                  a(href=routes.me)
+                      | PROFILE
+              li
+                  a(href=routes.logout)
+                      | LOGOUT

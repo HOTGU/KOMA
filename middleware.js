@@ -8,6 +8,7 @@ export const localsmiddleware = (req, res, next) => {
   res.locals.routes = routes;
   res.locals.siteName = "KOMA !";
   res.locals.loggedUser = req.user || null;
+  res.locals.env = process.env;
   next();
 };
 

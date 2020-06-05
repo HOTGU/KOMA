@@ -1,17 +1,18 @@
-extends layout/main.pug
+extends layout/tour.pug
 
 block content
-    .flex-container.container
-        .thumbnail-wrapper.flex-container__column.media-img
-            .thumbnail
-                .centered
-                    img(src=`/${tour.thumbnailUrl}`)
-        .flex-container__column
-            .tour-info
-                h3.tour-info__title=tour.title
-                .tour-info__concept
-                    for concept in tour.concept
-                        h5.concept-btn=concept
+    .tour-head__container
+        .flex-container.container
+            .thumbnail-wrapper.flex-container__column.media-img
+                .thumbnail
+                    .centered
+                        img(src=`/${tour.thumbnailUrl}`)
+            .flex-container__column
+                .tour-info
+                    h3.tour-info__title=tour.title
+                    .tour-info__concept
+                        for concept in tour.concept
+                            h5.concept-btn=concept
 
     .flex-container.container
         .flex-container__column 
@@ -39,6 +40,7 @@ block content
             -for(var i=0; i < tour.coursePhotos.length; i++)
                 .tour-list
                     .number-container
+                        span COURSE
                         .course-number=`${i+1}`
                     .course-flex          
                         .thumbnail-wrapper.course-img
